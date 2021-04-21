@@ -1,0 +1,132 @@
+[
+  {
+    "model": "raytracing.surface",
+    "pk": 1,
+    "fields": {
+      "system": 1,
+      "position": 0,
+      "obj_material": "AIR",
+      "img_material": "N-FK58",
+      "obj_position": -50,
+      "img_position": 76,
+      "max_rho": 10
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 2,
+    "fields": {
+      "system": 1,
+      "position": 10,
+      "obj_material": "N-FK58",
+      "img_material": "AIR",
+      "obj_position": 76,
+      "img_position": 30,
+      "max_rho": 10
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 3,
+    "fields": {
+      "system": 2,
+      "position": 0,
+      "obj_material": "AIR",
+      "img_material": "N-SSK2",
+      "obj_position": 1.0e24,
+      "img_position": 52,
+      "max_rho": 12
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 4,
+    "fields": {
+      "system": 2,
+      "position": 7.76,
+      "obj_material": "N-SSK2",
+      "img_material": "AIR",
+      "obj_position": 52,
+      "img_position": 25,
+      "max_rho": 12
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 5,
+    "fields": {
+      "system": 2,
+      "position": 8.99,
+      "obj_material": "AIR",
+      "img_material": "N-SF57",
+      "obj_position": 25,
+      "img_position": 95,
+      "max_rho": 12
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 6,
+    "fields": {
+      "system": 2,
+      "position": 13.99,
+      "obj_material": "N-SF57",
+      "img_material": "AIR",
+      "obj_position": 95,
+      "img_position": 37.76,
+      "max_rho": 12
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 7,
+    "fields": {
+      "system": 3,
+      "position": 0,
+      "obj_material": "AIR",
+      "img_material": "N-F2",
+      "obj_position": -69.3,
+      "img_position": 230,
+      "max_rho": 12
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 8,
+    "fields": {
+      "system": 3,
+      "position": 5.2,
+      "obj_material": "N-F2",
+      "img_material": "N-K5",
+      "obj_position": 230,
+      "img_position": 1.0e24,
+      "max_rho": 12
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 9,
+    "fields": {
+      "system": 3,
+      "position": 25,
+      "obj_material": "N-K5",
+      "img_material": "N-F2",
+      "obj_position": 1.0e24,
+      "img_position": -205,
+      "max_rho": 12
+    }
+  },
+  {
+    "model": "raytracing.surface",
+    "pk": 10,
+    "fields": {
+      "system": 3,
+      "position": 30.2,
+      "obj_material": "N-F2",
+      "img_material": "AIR",
+      "obj_position": -205,
+      "img_position": 99.5,
+      "max_rho": 12
+    }
+  }
+]

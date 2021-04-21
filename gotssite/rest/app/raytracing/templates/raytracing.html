@@ -1,0 +1,342 @@
+{% load static %}
+<!--
+
+=========================================================
+* Now UI Dashboard - v1.5.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/now-ui-dashboard
+* Copyright 2019 Creative Tim (http://www.creative-tim.com)
+
+* Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <!-- <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="../assets/img/favicon.png"> -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    GOTS: Ray-Tracing Plotter
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- CSS Files -->
+  <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link href="{% static 'css/now-ui-dashboard.css' %}?v=1.5.0" rel="stylesheet" />
+  <!-- Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="blue">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="http://www.gots-uis.com" class="simple-text logo-mini">
+          GOTS
+        </a>
+        <a href="http://www.gots-uis.com" class="simple-text logo-normal">
+          Plotter
+        </a>
+      </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <ul class="nav">
+          <li class="active">
+            <a href="{% url 'raytracing:index' %}">
+              <i class="fas fa-tachometer-alt"></i>
+              <p>Ray-tracing plot</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" id="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg bg-info navbar-absolute">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="#">Ray-tracing plot</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div id="plot-container" class="panel-header panel-header-lg">
+        
+      </div>
+      <div class="content">
+        <form id="RTform" action="" method="post">
+        <div class="row">
+          <div class="col-lg-2">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Global settings</h5>
+                <h4 class="card-title">Initial settings</h4>
+              </div>
+              <div class="card-body">
+                {% csrf_token %}
+                <div id="form-content"></div>
+              </div>
+              <div class="card-footer">
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-10">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">System settings</h5>
+                <h4 class="card-title">Geometry settings</h4>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-2">
+                    <div class="form-group">
+                      <div id="surfaces_position"></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div class="form-group">
+                      <div id="surfaces_max_rho"></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div class="form-group">
+                      <div id="stigmatic_points_o"></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div class="form-group">
+                      <div id="stigmatic_points_i"></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div class="form-group">
+                      <div id="materials_o"></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div class="form-group">
+                      <div id="materials_i"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        </form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-category">Cartesian surfaces parameters</h5>
+                <h4 class="card-title"> Form parameters</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        #
+                      </th>
+                      <th>
+                        G
+                      </th>
+                      <th>
+                        O
+                      </th>
+                      <th>
+                        T
+                      </th>
+                      <th>
+                        S
+                      </th>
+                    </thead>
+                    <tbody id="table1-body">
+                      {{data.table1|safe}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-category">Aspherical surfaces parameters</h5>
+                <h4 class="card-title"> Aspherical coefficients</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        #
+                      </th>
+                      <th>
+                        A4
+                      </th>
+                      <th>
+                        A6
+                      </th>
+                      <th>
+                        A8
+                      </th>
+                      <th>
+                        A10
+                      </th>
+                      <th>
+                        A12
+                      </th>
+                      <th>
+                        A14
+                      </th>
+                      <th>
+                        A16
+                      </th>
+                    </thead>
+                    <tbody id="table2-body">
+                      {{data.table2|safe}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class=" container-fluid ">
+          <nav>
+            <ul>
+              <li>
+                <a href="https://www.uis.edu.co">
+                  UIS
+                </a>
+              </li>
+              <li>
+                <a href="http://www.gots-uis.com">
+                  GOTS
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright" id="copyright">
+            &copy; <script>
+              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>, <a href="https://www.gots-uis.com" target="_blank">GOTS</a>.
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <script src="{% static 'js/core/popper.min.js' %}"></script>
+  <script src="{% static 'js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="{% static 'js/now-ui-dashboard.min.js' %}?v=1.5.0" type="text/javascript"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $.ajax({
+      url: "{% url 'raytracing:system_detail' pk=data.system_id %}",
+      success: function(data){
+        var plot = document.getElementById('plot-container');
+        var container = "{{ data.html_container }}".replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"');
+        var js_content = "{{ data.js_content }}".replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"');
+        plot.innerHTML = container;
+        
+        eval(js_content);
+
+        var items0 = document.getElementById('form-content');
+        items0.innerHTML = '';
+        items0.innerHTML += '<label for="aperture_size">Aperture size (radius) (mm)</label><input id="aperture_size" class="form-control" type="number" name="aperture_size" step="any" value="' + data.aperture_size + '" onchange="submitRT(this.form)" required></br>';
+        items0.innerHTML += '<label for="aperture_position">Aperture position (mm)</label><input id="aperture_position" class="form-control" type="number" name="aperture_position" step="any" value="' + data.aperture_position + '" onchange="submitRT(this.form)" required></br>';
+        items0.innerHTML += '<label for="wavelength">Wavelenth (&mu;m)</label><input id="wavelength" class="form-control" type="number" name="wavelength" step="any" value="' + data.wavelength + '" onchange="submitRT(this.form)" required></br>';
+        items0.innerHTML += '<label for="object_height">Object height (mm or rad)</label><input id="object_height" class="form-control" type="number" name="object_height" step="any" value="' + data.object_height + '" onchange="submitRT(this.form)" required></br>';
+        
+        var items1 = document.getElementById('surfaces_position');
+        var items2 = document.getElementById('surfaces_max_rho');
+        var items3a = document.getElementById('stigmatic_points_o');
+        var items3b = document.getElementById('stigmatic_points_i');
+        var items4a = document.getElementById('materials_o');
+        var items4b = document.getElementById('materials_i');
+
+        items1.innerHTML  = '';
+        items2.innerHTML  = '';
+        items3a.innerHTML = '';
+        items3b.innerHTML = '';
+        items4a.innerHTML = '';
+        items4b.innerHTML = '';
+        var i = 0;
+        (data.surfaces).forEach(function(data) {
+          items1.innerHTML  += '<label for="surfaces_position_' + i + '">Surface '+ i +' position</label><input id="surfaces_position_'+ i +'" class="form-control" type="number" name="surfaces_position" step="any" value="' + data.position + '" onchange="submitRT(this.form)" required></br>';
+          items2.innerHTML  += '<label for="surfaces_max_rho_' + i + '">Surface '+ i +' max. &rho;</label><input id="surfaces_max_rho_'+ i +'" class="form-control" type="number" name="surfaces_max_rho" step="any" value="' + data.max_rho + '" onchange="submitRT(this.form)" required></br>';
+          items3a.innerHTML += '<label for="stigmatic_points_o_' + i + '">Surface '+ i +' obj. position</label><input id="stigmatic_points_o_'+ i +'" class="form-control" type="number" name="stigmatic_points_o" step="any" value="' + data.obj_position + '" onchange="submitRT(this.form)" required></br>';
+          items3b.innerHTML += '<label for="stigmatic_points_i_' + i + '">Surface '+ i +' img. position</label><input id="stigmatic_points_i_'+ i +'" class="form-control" type="number" name="stigmatic_points_i" step="any" value="' + data.img_position + '" onchange="submitRT(this.form)" required></br>';
+          items4a.innerHTML += '<label for="materials_o_' + i + '">Surface '+ i +' obj. space material</label><input id="materials_o_'+ i +'" class="form-control" type="text" name="materials_o" step="any" value="' + data.obj_material + '" onchange="submitRT(this.form)" required></br>';
+          items4b.innerHTML += '<label for="materials_i_' + i + '">Surface '+ i +' img. space material</label><input id="materials_i_'+ i +'" class="form-control" type="text" name="materials_i" step="any" value="' + data.img_material + '" onchange="submitRT(this.form)" required></br>';
+          i=i+1
+        });
+      }
+    });
+  });
+
+  function submitRT(form) {
+    $.ajax({
+      data: $(form).serialize(),
+      type: $(form).attr('method'),
+      url: $(form).attr('action'),
+      success: function (response) {
+        var plot = document.getElementById('plot-container');
+        plot.innerHTML = response.data.html_container;
+        eval(response.data.js_content);
+
+        var table1 = document.getElementById('table1-body');
+        var table2 = document.getElementById('table2-body');
+
+        table1.innerHTML = "";
+        table2.innerHTML = "";
+
+        table1.innerHTML = response.data.table1;
+        table2.innerHTML = response.data.table2;
+      }
+    });
+  }
+</script>
+</body>
+
+</html>
