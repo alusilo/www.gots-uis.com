@@ -1,2 +1,3 @@
 gotssite/rest/app/settings.py
 gotssite/rest/app/wsgi.py
+*.pyc
