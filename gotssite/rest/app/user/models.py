@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
 from rest.app.country.models import Country
 
 class UserManager(BaseUserManager):
@@ -42,7 +43,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     username = models.CharField(verbose_name='username', max_length=45, unique=True)
