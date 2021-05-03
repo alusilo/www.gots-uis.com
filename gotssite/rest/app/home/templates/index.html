@@ -29,45 +29,35 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <img src="{% static 'img/logo.svg' %}" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+        <img src="{{ data.configuration.group_logo }}" height="50" class="d-inline-block align-top" alt="" loading="lazy">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Acerca de nosotros</a>
-          </li>
+          {% for item in data.menu.items %}
+          {% if item.elements %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownApps" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Aplicativos
+            {{item.name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownApps">
-              <a class="dropdown-item" href="https://meet.gots-uis.com">Servicio de videoconferencia</a>
-              <a class="dropdown-item" href="https://cloud.gots-uis.com">Servicio de almacenamiento</a>
-              <a class="dropdown-item" href="#">Simulaciones</a>
+              {% for element in item.elements %}
+              <a class="dropdown-item" href="{{element.url}}">{{element.name}}</a>
+              {% endfor %}
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownResearch" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Áreas de investigación
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownResearch">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
+          {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Noticias</a>
+            <a class="nav-link" href="#">{{item.name}}</a>
+            <!-- <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a> -->
           </li>
+          {% endif %}
+          {% endfor %}
         </ul>
         <div class="form-inline my-2 my-lg-0">
-          <button class="btn btn-success" type="button">Login</button>
+          <button class="btn btn-success" type="button" onclick="go_to_admin_panel()">{% if user.is_authenticated %}Admin{% else %}Login{% endif %}</button>
         </div>
       </div>
     </div>
@@ -307,6 +297,10 @@
   function go_to_owncloud()
   {
     location.href = "https://cloud.gots-uis.com";
+  }
+  function go_to_admin_panel()
+  {
+    location.href = "/admin";
   } 
   </script>
 

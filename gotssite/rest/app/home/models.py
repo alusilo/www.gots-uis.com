@@ -4,18 +4,30 @@ class Configuration(models.Model):
 	group_name = models.CharField(max_length=45)
 	admin_name = models.CharField(max_length=45)
 	admin_email = models.CharField(max_length=45)
-	group_logo = models.ImageField(upload_to='static', default='static/logo.png')
+	group_logo = models.ImageField(upload_to='static', default='static/img/logo.png')
 
-	def save(self):
-		# count will have all of the objects from the Aboutus model
-		count = Configuration.objects.all().count()
-		# this will check if the variable exist so we can update the existing ones
-		save_permission = Configuration.has_add_permission(self)
-		# if there's more than two objects it will not save them in the database
-		if count < 2:
-			super(Configuration, self).save()
-		elif save_permission:
-			super(Configuration, self).save()
+	def __str__(self):
+		return "Initial Configuration - %s" % self.group_name
 
-	def has_add_permission(self):
-		return Configuration.objects.filter(id=self.id).exists()
+
+class Menu(models.Model):
+	name = models.CharField(max_length=45)
+
+	def __str__(self):
+		return self.name
+
+class MenuItem(models.Model):
+	name = models.CharField(max_length=45)
+	url = models.URLField(max_length=200)
+	menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return "%s > %s" % (self.menu.name, self.name)
+
+class MenuItemElement(models.Model):
+	name = models.CharField(max_length=45)
+	url = models.URLField(max_length=200, blank=True, null=True)
+	menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return "%s > %s > %s" % (self.menu_item.menu.name, self.menu_item.name, self.name)
