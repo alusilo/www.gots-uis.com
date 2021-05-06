@@ -39,7 +39,9 @@ urlpatterns = [
     # user defined paths
     path('', include('rest.app.home.urls')),
     path('api/', include('rest_framework.urls')),
-    path('', include('rest.app.raytracing.urls')),
+    path('simulations/', include('rest.app.raytracing.urls')),
+    path('blog/', include('rest.app.blog.urls')),
+    path('research/', include('rest.app.research.urls')),
     # third-party paths
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

@@ -21,7 +21,7 @@
     "pk": 1,
     "fields": {
       "name": "Inicio",
-      "url": "",
+      "url": "http://www.gots-uis.com",
       "menu": 1
     }
   },
@@ -30,7 +30,7 @@
     "pk": 2,
     "fields": {
       "name": "Acerca de Nosotros",
-      "url": "",
+      "url": "http://www.gots-uis.com/about",
       "menu": 1
     }
   },
@@ -48,7 +48,7 @@
     "pk": 4,
     "fields": {
       "name": "Áreas de Investigación",
-      "url": "",
+      "url": "http://www.gots-uis.com/research",
       "menu": 1
     }
   },
@@ -57,7 +57,7 @@
     "pk": 5,
     "fields": {
       "name": "Noticias",
-      "url": "",
+      "url": "http://www.gots-uis.com/blog",
       "menu": 1
     }
   },
@@ -84,7 +84,7 @@
     "pk": 3,
     "fields": {
       "name": "Simulaciones",
-      "url": "",
+      "url": "http://www.gots-uis.com/simulations",
       "menu_item": 3
     }
   }

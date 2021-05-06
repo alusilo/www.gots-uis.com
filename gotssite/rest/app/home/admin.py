@@ -29,7 +29,9 @@ class MenuItemAdmin(admin.ModelAdmin):
     fields = ['name', 'url', 'menu']
 
 class MenuItemElementAdmin(admin.ModelAdmin):
-    fields = ['name', 'url', 'menu_item']
+	list_display = ('name', 'menu_item', 'url')
+	list_filter = ('menu_item',)
+	fields = ['name', 'url', 'menu_item']
 
 admin.site.register(Configuration, ConfigurationAdmin)
 admin.site.register(Menu, MenuAdmin)

@@ -4,6 +4,8 @@ from django.views.generic import TemplateView
 from django.core.exceptions import ObjectDoesNotExist
 
 from rest.app.home.models import Configuration, Menu, MenuItem, MenuItemElement
+from rest.app.blog.models import Post
+from rest.app.research.models import ResearchArea
 
 class HomeView(TemplateView):
 	template_name = "index.html"
@@ -47,7 +49,10 @@ class HomeView(TemplateView):
 				'configuration': configuration,
 				'menu': menu_data
 			},
-			'user': user
+			'user': user,
+			'carousel_items': Post.objects.all().filter(carousel_item=True),
+			'research_areas': ResearchArea.objects.all()
 		}
 
 		return render(request, self.template_name, response)
+		

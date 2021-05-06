@@ -1,0 +1,46 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h2 class=" site-heading my-4 mt-3 text-white"> Bienvenidos al Blog de noticias del GOTS </h2>
+                    <p class="lead mb-0 text-white">En este espacio encontraras todo lo referente a noticias de aspectos generales relacionadas con el área de optica! &nbsp
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="introduction">
+    <div class="container">
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-md-8 mt-4 left">
+                {% if post_list %}
+                {% for post in post_list %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ post.title }}</h2>
+                        <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                        <p class="card-text">{{post.short_description}}</p>
+                        <a href="{% url 'post_detail' post.slug  %}" class="btn btn-success">Leer Más &rarr;</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="alert alert-light" role="alert">
+                    <h4 class="alert-heading">Nadie ha creado una entrada aun!</h4>
+                    <p>Para crear una entrada debes tener una cuenta, si la tienes te invito a que crees tu primera entrada.</p>
+                </div>
+                {% endif %}
+            </div>
+            {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+        </div>
+    </div>
+</section>
+{%endblock%}
