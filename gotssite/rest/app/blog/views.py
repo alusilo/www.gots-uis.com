@@ -2,6 +2,7 @@ from rest_framework import status
 from django.shortcuts import render
 from django.views import generic
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from rest.app.home.models import Configuration, Menu, MenuItem, MenuItemElement
 from rest.app.blog.models import Post, Comment
@@ -13,6 +14,17 @@ class PostList(generic.ListView):
 	template_name = 'post_list.html'
 
 	def get(self, request, *args, **kwargs):
+		object_list = Post.objects.filter(status=1).order_by('-created_on')
+		paginator = Paginator(object_list, 5)
+		page = request.GET.get('page')
+		
+		try:
+			post_list = paginator.page(page)
+		except PageNotAnInteger:
+			post_list = paginator.page(1)
+		except EmptyPage:
+			post_list = paginator.page(paginator.num_pages)
+
 		if request.user.is_anonymous:
 			user = None
 		else:
@@ -53,7 +65,8 @@ class PostList(generic.ListView):
 				'menu': menu_data
 			},
 			'user': user,
-			'post_list': Post.objects.filter(status=1).order_by('-created_on')
+			'post_list': post_list,
+			'page': page
 		}
 
 		return render(request, self.template_name, response)

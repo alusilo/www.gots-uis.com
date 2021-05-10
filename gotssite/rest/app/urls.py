@@ -35,6 +35,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     # django paths
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     # user defined paths
     path('', include('rest.app.home.urls')),
