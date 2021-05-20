@@ -46,6 +46,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    first_name = models.CharField(max_length=45, null=True, blank=True)
+    last_name = models.CharField(max_length=45, null=True, blank=True)
     username = models.CharField(verbose_name='username', max_length=45, unique=True)
     email = models.EmailField(
         verbose_name='email address',
@@ -56,6 +58,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    date_of_birth = models.DateField(null=True, blank=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
