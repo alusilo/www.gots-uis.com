@@ -29,7 +29,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <img src="/{{ data.configuration.group_logo }}" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+        <img src="{{ data.configuration.group_logo.url }}" height="50" class="d-inline-block align-top" alt="" loading="lazy">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -99,7 +99,7 @@
             <h2 class=" site-heading my-4 mt-3 text-white"> Binevenidos al Grupo de Óptica y Tratamiento de Señales </h2>
             <p class="lead mb-0 text-white">En la UIS se comenzó a incursionar en algunos aspectos de óptica desde 1972, cuando se creó el postgrado en Física.</p>
             <br>
-            <a class="btn btn-success" href="#">Ver más &raquo;</a>
+            <a class="btn btn-success" href="/about/">Ver más &raquo;</a>
           </div>
         </div>
       </div>
@@ -169,7 +169,7 @@
       {% for item in research_areas %}
       {% if forloop.counter|divisibleby:2 %}
       <div class="row no-gutters">
-        <div class="col-lg-6 text-white showcase-img" style="background-image: url('{{item.image}}');"></div>
+        <div class="col-lg-6 text-white showcase-img" style="background-image: url('{{ item.image.url }}');"></div>
         <div class="col-lg-6 my-auto showcase-text">
           <h2>{{item.area}}</h2>
           <p class="lead mb-0">{{item.description}}</p>
@@ -179,7 +179,7 @@
       </div>
       {% else %}
       <div class="row no-gutters">
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('{{item.image}}');"></div>
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('{{ item.image.url }}');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>{{item.area}}</h2>
           <p class="lead mb-0">{{item.description}}</p>

@@ -4,7 +4,7 @@ from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement
 
 
 class ConfigurationAdmin(admin.ModelAdmin):
-	fields = ['group_name', 'group_logo', 'admin_name', 'admin_email']
+	fields = ['group_name', 'about', 'group_logo', 'admin_name', 'admin_email']
 
 	def has_add_permission(self, request):
 		count = Configuration.objects.all().count()

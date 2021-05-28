@@ -11,6 +11,7 @@ class PublicationAdmin(admin.ModelAdmin):
 	list_display = ('title', 'journal', 'pub_date', 'doi')
 	list_filter = ('author',)
 	search_fields = ['title', 'abstract', 'full_description']
+	prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(ResearchArea, ResearchAreaAdmin)
 admin.site.register(Publication, PublicationAdmin)

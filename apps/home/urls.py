@@ -1,6 +1,7 @@
-from django.conf.urls import url
-from apps.home.views import HomeView
+from django.urls import path
+from apps.home.views import HomeView, AboutView
 
 urlpatterns = [
-    url(r'^$', HomeView.as_view()),
+    path('', HomeView.as_view()),
+    path('about/', AboutView.as_view()),
 ]

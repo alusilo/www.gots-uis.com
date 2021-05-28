@@ -6,11 +6,22 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 pl-0 pr-0 card mb-4 mt-3 left top">
-        <img class="card-img-top" src="/{{researcharea.image}}" alt="Card image cap">
+        <img class="card-img-top" src="{{ researcharea.image.url }}" alt="Card image cap">
         <div class="card-body">
           <h1>{% block title %} {{ researcharea.area }} {% endblock title %}</h1>
           <p class=" text-muted">{{ researcharea.created_on }}</p>
           <p class="card-text ">{{ researcharea.content | safe }}</p>
+
+          <h2>Trabajos de investigacion</h2>
+          {% for research in researches %}
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'publication_detail' research.slug %}">{{ research.title }}</a></h5>
+              <p class="card-text bold">{% for author in research.author.all %}{{ author.last_name }}, {{ author.first_name }}; {% endfor %}</p>
+              <p class="card-text bold">{{ research.pub_date.year }} {{ research.journal }} View: <a href="">HTML</a> {% if research.pdf_file %}| <a href="{{ research.pdf_file.url }}">PDF</a> {% endif %}| <a href="{{ research.doi }}">DOI</a></p>
+            </div>
+          </div>
+          {% endfor %}
         </div>
       </div>
       {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}

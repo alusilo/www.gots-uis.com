@@ -12,7 +12,7 @@ class Post(models.Model):
 	slug = models.SlugField(max_length=200, unique=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
 	abstract = models.TextField(blank=True, null=True)
-	image = models.ImageField(upload_to='static/img/blog', default='/static/img/blog/default.jpg')
+	image = models.ImageField(upload_to='blog')
 	updated_on = models.DateTimeField(auto_now=True)
 	content = models.TextField(blank=True, null=True)
 	created_on = models.DateTimeField(auto_now_add=True)

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="introduction">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 pl-0 pr-0 card mb-4 mt-3 left top">
+        <img class="card-img-top" src="{{ publication.image.url }}" alt="Card image cap">
+        <div class="card-body">
+          <h1>{% block title %} {{ publication.title }} {% endblock title %}</h1>
+          <p>{% for author in publication.author.all %}{{ author.last_name }}, {{ author.first_name }}; {% endfor %}</p>
+          <p class=" text-muted">{{ publication.pub_date }} <strong>{{ publication.journal }}</strong></p>
+          <h5>Resumen</h5>
+          <p class="card-text ">{{ publication.abstract}}</p>
+          <h5>Descripción completa</h5>
+          {{ publication.full_description | safe }}
+        </div>
+      </div>
+      {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

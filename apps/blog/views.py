@@ -104,13 +104,11 @@ class PostDetail(generic.DetailView):
 		except ObjectDoesNotExist:
 			menu_data = None
 
-		status_code = status.HTTP_200_OK
 		post = Post.objects.get(slug=slug)
 		comments = Comment.objects.filter(post=post).filter(active=True)
 		comment_form = CommentForm()
 		response = {
 			'success': 'true',
-			'status code': status_code,
 			'message': 'Configuration data fetched successfully',
 			'data': {
 				'configuration': configuration,
@@ -165,10 +163,8 @@ class PostDetail(generic.DetailView):
 		except ObjectDoesNotExist:
 			menu_data = None
 
-		status_code = status.HTTP_200_OK
 		response = {
 			'success': 'true',
-			'status code': status_code,
 			'message': 'Configuration data fetched successfully',
 			'data': {
 				'configuration': configuration,
