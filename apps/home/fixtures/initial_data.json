@@ -1,0 +1,91 @@
+[
+  {
+    "model": "home.configuration",
+    "pk": 1,
+    "fields": {
+      "group_name": "Grupo de Óptica y Tratamiento de Señales",
+      "admin_name": "Alberto Silva",
+      "admin_email": "silva.l.a.l@gmail.com",
+      "group_logo": "static/img/logo.png"
+    }
+  },
+  {
+    "model": "home.menu",
+    "pk": 1,
+    "fields": {
+      "name": "main"
+    }
+  },
+  {
+    "model": "home.menuitem",
+    "pk": 1,
+    "fields": {
+      "name": "Inicio",
+      "url": "/",
+      "menu": 1
+    }
+  },
+  {
+    "model": "home.menuitem",
+    "pk": 2,
+    "fields": {
+      "name": "Acerca de Nosotros",
+      "url": "/about/",
+      "menu": 1
+    }
+  },
+  {
+    "model": "home.menuitem",
+    "pk": 3,
+    "fields": {
+      "name": "Aplicativos",
+      "url": "",
+      "menu": 1
+    }
+  },
+  {
+    "model": "home.menuitem",
+    "pk": 4,
+    "fields": {
+      "name": "Áreas de Investigación",
+      "url": "/research/",
+      "menu": 1
+    }
+  },
+  {
+    "model": "home.menuitem",
+    "pk": 5,
+    "fields": {
+      "name": "Noticias",
+      "url": "/blog/",
+      "menu": 1
+    }
+  },
+  {
+    "model": "home.menuitemelement",
+    "pk": 1,
+    "fields": {
+      "name": "Servicio de videoconferencia",
+      "url": "https://meet.gots-uis.com",
+      "menu_item": 3
+    }
+  },
+  {
+    "model": "home.menuitemelement",
+    "pk": 2,
+    "fields": {
+      "name": "Servicio de almacenamiento",
+      "url": "https://cloud.gots-uis.com",
+      "menu_item": 3
+    }
+  },
+  {
+    "model": "home.menuitemelement",
+    "pk": 3,
+    "fields": {
+      "name": "Simulaciones",
+      "url": "/simulations/",
+      "menu_item": 3
+    }
+  }
+]
