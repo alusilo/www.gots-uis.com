@@ -8,16 +8,16 @@ STATUS = (
 )
 # Create your models here.
 class Post(models.Model):
-	title = models.CharField(max_length=200, unique=True)
-	slug = models.SlugField(max_length=200, unique=True)
+	title = models.CharField('Título', max_length=200, unique=True)
+	slug = models.SlugField('Slug', max_length=200, unique=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
-	abstract = models.TextField(blank=True, null=True)
-	image = models.ImageField(upload_to='blog')
-	updated_on = models.DateTimeField(auto_now=True)
-	content = models.TextField(blank=True, null=True)
-	created_on = models.DateTimeField(auto_now_add=True)
-	status = models.IntegerField(choices=STATUS, default=0)
-	carousel_item = models.BooleanField('show item in carousel', default=False)
+	abstract = models.TextField('Resumen', blank=True, null=True)
+	image = models.ImageField('Imagen (1200x400)', upload_to='blog')
+	updated_on = models.DateTimeField('Fecha última actualización', auto_now=True)
+	content = models.TextField('Contenido', blank=True, null=True)
+	created_on = models.DateTimeField('Fecha de creación', auto_now_add=True)
+	status = models.IntegerField('Estado', choices=STATUS, default=0)
+	carousel_item = models.BooleanField('Mostrar en la página de inicio', default=False)
 
 	class Meta:
 		ordering = ['-created_on']

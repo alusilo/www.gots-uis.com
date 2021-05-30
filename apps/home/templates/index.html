@@ -69,10 +69,10 @@
     <div class="carousel-inner">
       {% for item in carousel_items %}
       <div class="carousel-item active">
-        <img src="/{{item.image}}" class="d-block w-100" alt="">
+        <img src="{{ item.image.url }}" class="d-block w-100" alt="">
         <div class="carousel-caption d-none d-md-block">
           <h2>{{item.title}}</h2>
-          <p class="lead mb-0">{{item.short_description}}</p>
+          <p class="lead mb-0">{{ item.short_description }}</p>
           <br>
           <a class="btn btn-success" href="{% url 'post_detail' slug=item.slug %}">Ver más &raquo;</a>
         </div>
