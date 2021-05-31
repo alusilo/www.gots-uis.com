@@ -1,4 +1,4 @@
-config/settings.py
+settings.py
 config/wsgi.py
 *.pyc
 # Byte-compiled / optimized / DLL files
