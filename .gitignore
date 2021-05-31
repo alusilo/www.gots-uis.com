@@ -1,5 +1,5 @@
-gotssite/rest/app/settings.py
-gotssite/rest/app/wsgi.py
+config/settings.py
+config/wsgi.py
 *.pyc
 # Byte-compiled / optimized / DLL files
 __pycache__/
