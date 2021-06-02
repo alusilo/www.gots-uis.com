@@ -2,8 +2,11 @@ from django.db import models
 
 from apps.user.models import User
 
+import uuid
+
 # Create your models here.
 class ResearchArea(models.Model):
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	area = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=200, unique=True)
 	description = models.TextField()
@@ -18,6 +21,7 @@ class ResearchArea(models.Model):
 		return self.area
 
 class Publication(models.Model):
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	title = models.CharField(max_length=200)
 	author = models.ManyToManyField(User)
 	area = models.ForeignKey(ResearchArea, on_delete=models.CASCADE)

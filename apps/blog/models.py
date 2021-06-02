@@ -1,18 +1,29 @@
 from django.db import models
 from apps.user.models import User
 from django.template.defaultfilters import truncatechars
+from django.conf import settings
+
+from apps.blog.storage import OverwriteStorage
+
+import uuid
 
 STATUS = (
 	(0, "Draft"),
 	(1, "Publish")
 )
+
+def post_image_filename(instance, file):
+	filename, extension = file.split('.')
+	return 'blog/{}.{}'.format(instance.pk, extension)
+
 # Create your models here.
 class Post(models.Model):
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	title = models.CharField('Título', max_length=200, unique=True)
 	slug = models.SlugField('Slug', max_length=200, unique=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
 	abstract = models.TextField('Resumen', blank=True, null=True)
-	image = models.ImageField('Imagen (1200x400)', upload_to='blog')
+	image = models.ImageField('Imagen (1200x400)', upload_to=post_image_filename, storage=OverwriteStorage())
 	updated_on = models.DateTimeField('Fecha última actualización', auto_now=True)
 	content = models.TextField('Contenido', blank=True, null=True)
 	created_on = models.DateTimeField('Fecha de creación', auto_now_add=True)
