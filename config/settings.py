@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'apps.home.apps.HomeConfig',
     'apps.blog.apps.BlogConfig',
     'apps.research.apps.ResearchConfig',
+    'apps.simulation.apps.SimulationConfig',
 ]
 
 MIDDLEWARE = [
