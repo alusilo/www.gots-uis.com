@@ -108,3 +108,8 @@ body {
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
+
+/*
+ * Editable Table
+ */
+.pt-3-half { padding-top: 1.4rem; }
