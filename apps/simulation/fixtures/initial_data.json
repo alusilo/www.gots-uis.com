@@ -1,0 +1,653 @@
+[
+  {
+    "model": "simulation.material",
+    "pk": 1,
+    "fields": {
+      "name": "E-SK10"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 2,
+    "fields": {
+      "name": "J-LAF7"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 3,
+    "fields": {
+      "name": "J-KZFH1"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 4,
+    "fields": {
+      "name": "BASF6"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 5,
+    "fields": {
+      "name": "P-SF68"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 6,
+    "fields": {
+      "name": "SF56A"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 7,
+    "fields": {
+      "name": "N-FK51A"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 8,
+    "fields": {
+      "name": "N-FK58"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 9,
+    "fields": {
+      "name": "N-FK5"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 10,
+    "fields": {
+      "name": "N-PK51"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 11,
+    "fields": {
+      "name": "N-PK52A"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 12,
+    "fields": {
+      "name": "N-BK10"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 13,
+    "fields": {
+      "name": "N-BK7"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 14,
+    "fields": {
+      "name": "N-BK7G18"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 15,
+    "fields": {
+      "name": "N-PSK3"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 16,
+    "fields": {
+      "name": "N-PSK53A"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 17,
+    "fields": {
+      "name": "N-ZK7"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 18,
+    "fields": {
+      "name": "N-ZK7A"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 19,
+    "fields": {
+      "name": "N-K7"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 20,
+    "fields": {
+      "name": "N-K5"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 21,
+    "fields": {
+      "name": "N-K10"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 22,
+    "fields": {
+      "name": "N-KF9"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 23,
+    "fields": {
+      "name": "N-BAK2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 24,
+    "fields": {
+      "name": "N-BAK1"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 25,
+    "fields": {
+      "name": "N-BAK4"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 26,
+    "fields": {
+      "name": "N-BALF5"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 27,
+    "fields": {
+      "name": "N-KZFS2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 28,
+    "fields": {
+      "name": "N-BALF4"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 29,
+    "fields": {
+      "name": "N-SK11"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 30,
+    "fields": {
+      "name": "N-SK5"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 31,
+    "fields": {
+      "name": "N-SK14"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 32,
+    "fields": {
+      "name": "N-SK16"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 33,
+    "fields": {
+      "name": "N-SK4"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 34,
+    "fields": {
+      "name": "N-SK2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 35,
+    "fields": {
+      "name": "N-SSK2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 36,
+    "fields": {
+      "name": "N-SSK5"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 37,
+    "fields": {
+      "name": "N-SSK8"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 38,
+    "fields": {
+      "name": "N-LAK21"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 39,
+    "fields": {
+      "name": "N-LAK7"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 40,
+    "fields": {
+      "name": "N-LAK22"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 41,
+    "fields": {
+      "name": "N-LAK12"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 42,
+    "fields": {
+      "name": "N-LAK14"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 43,
+    "fields": {
+      "name": "N-LAK9"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 44,
+    "fields": {
+      "name": "N-LAK35"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 45,
+    "fields": {
+      "name": "N-LAK34"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 46,
+    "fields": {
+      "name": "N-LAK8"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 47,
+    "fields": {
+      "name": "N-LAK10"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 48,
+    "fields": {
+      "name": "N-LAK33B"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 49,
+    "fields": {
+      "name": "N-LAK33A"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 50,
+    "fields": {
+      "name": "N-F2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 51,
+    "fields": {
+      "name": "N-SF2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 52,
+    "fields": {
+      "name": "N-SF5"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 53,
+    "fields": {
+      "name": "N-SF8"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 54,
+    "fields": {
+      "name": "N-SF15"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 55,
+    "fields": {
+      "name": "N-SF1"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 56,
+    "fields": {
+      "name": "N-SF10"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 57,
+    "fields": {
+      "name": "N-SF4"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 58,
+    "fields": {
+      "name": "N-SF14"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 59,
+    "fields": {
+      "name": "N-SF11"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 60,
+    "fields": {
+      "name": "N-SF6"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 61,
+    "fields": {
+      "name": "N-SF57"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 62,
+    "fields": {
+      "name": "N-SF66"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 63,
+    "fields": {
+      "name": "N-SF6HT"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 64,
+    "fields": {
+      "name": "N-BAF10"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 65,
+    "fields": {
+      "name": "N-BAF52"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 66,
+    "fields": {
+      "name": "N-KZFS4"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 67,
+    "fields": {
+      "name": "N-BAF4"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 68,
+    "fields": {
+      "name": "N-BAF51"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 69,
+    "fields": {
+      "name": "N-KZFS11"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 70,
+    "fields": {
+      "name": "N-KZFS5"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 71,
+    "fields": {
+      "name": "N-N-BASF2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 72,
+    "fields": {
+      "name": "N-BASF64"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 73,
+    "fields": {
+      "name": "N-KZFS8"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 74,
+    "fields": {
+      "name": "N-LAF7"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 75,
+    "fields": {
+      "name": "N-LAF2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 76,
+    "fields": {
+      "name": "N-LAF37"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 77,
+    "fields": {
+      "name": "N-LAF35"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 78,
+    "fields": {
+      "name": "N-LAF34"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 79,
+    "fields": {
+      "name": "N-LAF21"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 80,
+    "fields": {
+      "name": "N-LAF33"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 81,
+    "fields": {
+      "name": "N-LASF9"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 82,
+    "fields": {
+      "name": "N-LASF44"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 83,
+    "fields": {
+      "name": "N-LASF43"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 84,
+    "fields": {
+      "name": "N-LASF41"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 85,
+    "fields": {
+      "name": "N-LASF45"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 86,
+    "fields": {
+      "name": "N-LASF31A"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 87,
+    "fields": {
+      "name": "N-LASF40"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 88,
+    "fields": {
+      "name": "N-LASF46A"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 89,
+    "fields": {
+      "name": "N-LASF46B"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 90,
+    "fields": {
+      "name": "N-LASF35"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 91,
+    "fields": {
+      "name": "N-LAK9CP"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 92,
+    "fields": {
+      "name": "CAF2"
+    }
+  },
+  {
+    "model": "simulation.material",
+    "pk": 93,
+    "fields": {
+      "name": "AIR"
+    }
+  }
+]

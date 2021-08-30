@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.simulation.models import Material
+
+
+class MaterialAdmin(admin.ModelAdmin):
+	fields = ['name']
+
+admin.site.register(Material, MaterialAdmin)

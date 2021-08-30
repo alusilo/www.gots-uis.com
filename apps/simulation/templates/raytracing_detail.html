@@ -42,128 +42,98 @@
         <!-- Editable table -->
         <div class="card">
           <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
-            Editable table
+            Optical system parameters
           </h3>
           <div class="card-body">
             <div id="table" class="table-editable">
-              <span class="table-add float-right mb-3 mr-2"
-              ><a href="#!" class="text-success"
-              ><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a
-              ></span>
-              <table class="table table-dark table-bordered table-responsive-md table-striped text-center">
-                <thead>
-                  <tr>
-                    <th class="text-center">Person Name</th>
-                    <th class="text-center">Age</th>
-                    <th class="text-center">Company Name</th>
-                    <th class="text-center">Country</th>
-                    <th class="text-center">City</th>
-                    <th class="text-center">Sort</th>
-                    <th class="text-center">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="pt-3-half" contenteditable="true">Aurelia Vega</td>
-                    <td class="pt-3-half" contenteditable="true">30</td>
-                    <td class="pt-3-half" contenteditable="true">Deepends</td>
-                    <td class="pt-3-half" contenteditable="true">Spain</td>
-                    <td class="pt-3-half" contenteditable="true">Madrid</td>
-                    <td class="pt-3-half">
-                      <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                      ></span>
-                      <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                      ></span>
-                    </td>
-                    <td>
-                      <span class="table-remove"
-                      ><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Remove
-                      </button></span
-                      >
-                    </td>
-                  </tr>
-                  <!-- This is our clonable table line -->
-                  <tr>
-                    <td class="pt-3-half" contenteditable="true">Guerra Cortez</td>
-                    <td class="pt-3-half" contenteditable="true">45</td>
-                    <td class="pt-3-half" contenteditable="true">Insectus</td>
-                    <td class="pt-3-half" contenteditable="true">USA</td>
-                    <td class="pt-3-half" contenteditable="true">San Francisco</td>
-                    <td class="pt-3-half">
-                      <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                      ></span>
-                      <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                      ></span>
-                    </td>
-                    <td>
-                      <span class="table-remove"
-                      ><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Remove
-                      </button></span
-                      >
-                    </td>
-                  </tr>
-                  <!-- This is our clonable table line -->
-                  <tr>
-                    <td class="pt-3-half" contenteditable="true">Guadalupe House</td>
-                    <td class="pt-3-half" contenteditable="true">26</td>
-                    <td class="pt-3-half" contenteditable="true">Isotronic</td>
-                    <td class="pt-3-half" contenteditable="true">Germany</td>
-                    <td class="pt-3-half" contenteditable="true">Frankfurt am Main</td>
-                    <td class="pt-3-half">
-                      <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                      ></span>
-                      <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                      ></span>
-                    </td>
-                    <td>
-                      <span class="table-remove"
-                      ><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Remove
-                      </button></span
-                      >
-                    </td>
-                  </tr>
-                  <!-- This is our clonable table line -->
-                  <tr class="hide">
-                    <td class="pt-3-half" contenteditable="true">Elisa Gallagher</td>
-                    <td class="pt-3-half" contenteditable="true">31</td>
-                    <td class="pt-3-half" contenteditable="true">Portica</td>
-                    <td class="pt-3-half" contenteditable="true">United Kingdom</td>
-                    <td class="pt-3-half" contenteditable="true">London</td>
-                    <td class="pt-3-half">
-                      <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                      ></span>
-                      <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                      ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                      ></span>
-                    </td>
-                    <td>
-                      <span class="table-remove"
-                      ><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Remove
-                      </button></span
-                      >
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <span class="table-add float-right mb-3 mr-2">
+                <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-plus" aria-hidden="true"></i></button>
+              </span>
+              <span class="table-config float-right mb-3 mr-2">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ConfigModal"><i class="fas fa-cog" aria-hidden="true"></i></button>
+              </span>
+              <form id="form" action='' method='post' class="needs-validation">
+                {% csrf_token %}
+                <table class="table table-dark table-bordered table-responsive-md table-striped text-center">
+                  <thead>
+                    <tr>
+                      <th class="text-center">SRF</th>
+                      <th class="text-center">Vtx srf position</th>
+                      <th class="text-center">Apt radius</th>
+                      <th class="text-center">Glass Material</th>
+                      <th class="text-center">Stg point object</th>
+                      <th class="text-center">Stg point image</th>
+                      <th class="text-center">Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- This is our clonable table line -->
+                    <tr>
+                      <td class="pt-3-half">OBJ</td>
+                      <td class="pt-3-half"><input type="number" name="obj_position" value="{% if data.obj_position %}{{data.obj_position}}{% else %}-1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" name="obj_aperture" value="{% if data.max_apt_obj %}{{data.max_apt_obj}}{% else %}10{% endif %}" required></td>
+                      <td class="pt-3-half">
+                        <select name="glass" required>
+                          {% if data.obj_glass %}
+                          {% for item in materials %}
+                          {% ifequal item.name data.obj_glass %}
+                          <option value="{{item.name}}" selected="selected">{{item.name}}</option>
+                          {% else %}
+                          <option value="{{item.name}}">{{item.name}}</option>
+                          {% endifequal %}
+                          {% endfor %}
+                          {% else %}
+                          {% for item in materials %}
+                          {% ifequal item.name "AIR" %}
+                          <option value="{{item.name}}" selected="selected">{{item.name}}</option>
+                          {% else %}
+                          <option value="{{item.name}}">{{item.name}}</option>
+                          {% endifequal %}
+                          {% endfor %}
+                          {% endif %}
+                        </select>
+                      </td>
+                      <td class="pt-3-half"><input type="number" name="stg_obj_obj_plane" value="{% if data.stg_obj_obj %}{{data.stg_obj_obj}}{% else %}1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" name="stg_img_obj_plane" value="{% if data.stg_img_obj %}{{data.stg_img_obj}}{% else %}1e8{% endif %}" required></td>
+                      <td></td>
+                    </tr>
+                    {% for item in data.rows %}
+                    <tr class="hide">
+                      <td class="pt-3-half">{{ forloop.counter }}</td>
+                      <td class="pt-3-half"><input type="number" name="position" value="{{item.position}}" required></td>
+                      <td class="pt-3-half"><input type="number" name="max_apt" value="{{item.max_aperture}}" required></td>
+                      <td class="pt-3-half">
+                        <select name="glass" required>
+                          {% for mat in materials %}
+                          {% ifequal mat.name item.material %}
+                          <option value="{{mat.name}}" selected="selected">{{mat.name}}</option>
+                          {% else %}
+                          <option value="{{mat.name}}">{{mat.name}}</option>
+                          {% endifequal %}
+                          {% endfor %}
+                        </select>
+                      </td>
+                      <td class="pt-3-half"><input type="number" name="stg_pts_obj" value="{{item.stigmatic_obj}}" required></td>
+                      <td class="pt-3-half"><input type="number" name="stg_pts_img" value="{{item.stigmatic_img}}" required></td>
+                      <td>
+                        <span class="table-remove"><button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-trash-alt"></i></button></span>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- This is our clonable table line -->
+                    <tr class="hide">
+                      <td class="pt-3-half">IMS</td>
+                      <td class="pt-3-half"><input type="number" name="img_position" value="{% if data.img_position %}{{data.img_position}}{% else %}1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" name="img_aperture" value="{% if data.max_apt_img %}{{data.max_apt_img}}{% else %}10{% endif %}" required></td>
+                      <td class="pt-3-half"></td>
+                      <td class="pt-3-half"><input type="number" name="stg_obj_img_plane" value="{% if data.stg_obj_img %}{{data.stg_obj_img}}{% else %}1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" name="stg_img_img_plane" value="{% if data.stg_img_img %}{{data.stg_img_img}}{% else %}1e8{% endif %}" required></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button class="btn btn-success" id="submit" type="submit" form="form" value="Submit" disabled><i class="fas fa-rocket"></i></button>
+              </form>
             </div>
           </div>
         </div>
@@ -172,9 +142,129 @@
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; GOTS 2021. All Rights Reserved.</p>
         </div>
       </footer>
+
+      <!-- Config Modal -->
+      <div class="modal fade" id="ConfigModal" tabindex="-1" role="dialog" aria-labelledby="ConfigModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ConfigModalTitle">Configuration</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <h5>Aperture</h5>
+                <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="AperturePositionX">Position x</label>
+                    <input type="number" form="form" name="aperture_position" class="form-control" id="AperturePositionX" value="{% if stop_x %}{{stop_x}}{% else %}0.0{% endif %}" placeholder="x">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="AperturePositionY">Position y</label>
+                    <input type="number" form="form" name="aperture_position" class="form-control" id="AperturePositionY" value="{% if stop_y %}{{stop_y}}{% else %}0.0{% endif %}" placeholder="y">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="AperturePositionZ">Position z</label>
+                    <input type="number" form="form" name="aperture_position" class="form-control" id="AperturePositionZ" value="{% if stop_z %}{{stop_z}}{% else %}0.0{% endif %}" placeholder="z">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="ApertureRadius">Radius</label>
+                    <input type="number" form="form" name="aperture_radius" class="form-control" id="ApertureRadius" value="{% if stop_radius %}{{stop_radius}}{% else %}1.0{% endif %}">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <h5>Wavelengths [microns]</h5>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <select multiple class="form-control" form="form" name="wavelengths" id="WavelengthSelection">
+                      {% if wavelengths %}
+                      {% if 0.48613 in wavelengths %}
+                      <option selected>0.48613</option>
+                      {% else %}
+                      <option>0.48613</option>
+                      {% endif %}
+                      {% if 0.58930 in wavelengths %}
+                      <option selected>0.58930</option>
+                      {% else %}
+                      <option>0.58930</option>
+                      {% endif %}
+                      {% if 0.65627 in wavelengths %}
+                      <option selected>0.65627</option>
+                      {% else %}
+                      <option>0.65627</option>
+                      {% endif %}
+                      {% else %}
+                      <option>0.48613</option>
+                      <option selected>0.58930</option>
+                      <option>0.65627</option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <h5>Max. field point</h5>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="FieldPositionX">x</label>
+                    <input type="number" form="form" name="field_position" class="form-control" id="FieldPositionX" value="{% if field_x %}{{field_x}}{% else %}0.0{% endif %}" placeholder="x">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="FieldPositionY">y</label>
+                    <input type="number" form="form" name="field_position" class="form-control" id="FieldPositionY" value="{% if field_y %}{{field_y}}{% else %}0.0{% endif %}" placeholder="y">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <h5>Visualization</h5>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <select class="form-control" form="form" name="show_from" id="ShowSelection">
+                      {% if show_from %}
+                      <option value="0" {% ifequal show_from 0 %}selected{% endifequal %}>From object surface</option>
+                      <option value="1" {% ifequal show_from 1 %}selected{% endifequal %}>From first surface</option>
+                      {% else %}
+                      <option value="0" selected>From object surface</option>
+                      <option value="1">From first surface</option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-check"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visualization Modal -->
+      <div class="modal fade" id="VisualizationModal" tabindex="-1" role="dialog" aria-labelledby="VisualizationModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="VisualizationModalTitle">Visualization</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {{simulation_html|safe}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-check"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
 
@@ -186,5 +276,12 @@
     <!-- <script src="vendor/js/popper.min.js"></script> -->
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/cover.js' %}"></script>
+    <script type="text/javascript">
+      $(window).on('load', function() {
+        var simulation = {{simulation}};
+        if (simulation)
+          $('#VisualizationModal').modal('show');
+      });
+    </script>
   </body>
 </html>
