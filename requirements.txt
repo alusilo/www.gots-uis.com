@@ -2,3 +2,6 @@ django==3.2
 psycopg2==2.8.5
 django-crispy-forms
 python-dotenv
+mpld3
+numpy
+matplotlib
