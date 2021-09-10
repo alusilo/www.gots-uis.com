@@ -463,15 +463,23 @@ class OpticalSystem(object):
 		The draw_spot_diagram function visualize the spot diagram of the system.
 		"""
 		render = kwargs.get('render', False)
-		width = 6.0
+		width = 3
 		height = width / 0.75
 
 		params = {
 			'axes.labelsize': 12,
 			'legend.fontsize': 12,
+			'text.color': 'white',
+			'xtick.color': 'white',
+			'ytick.color': 'white',
+			'axes.labelcolor': 'white',
+			'xtick.labelcolor': 'white',
+			'ytick.labelcolor': 'white',
+			'legend.facecolor': 'white',
+			'axes.edgecolor': 'white',
 			'xtick.labelsize': 12,
 			'ytick.labelsize': 12,
-			'text.usetex': False,
+			'text.usetex': True,
 			'axes.axisbelow': False,
 			'figure.figsize': [width, height]
 		}
@@ -498,8 +506,8 @@ class OpticalSystem(object):
 						angle)
 					axs[i].plot(xp, yp, '-', lw=1, c=sline.color)
 
-			axs[i].set_xlabel(r'x[$\mu m$]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
-			axs[i].set_ylabel(r'y[$\mu m$]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
+			axs[i].set_xlabel(r'x[microns]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
+			axs[i].set_ylabel(r'y[microns]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 
 			axs[i].set_aspect('equal')
 
@@ -507,21 +515,31 @@ class OpticalSystem(object):
 
 		if render:
 			plt.show()
+		else:
+			return mpld3.fig_to_html(fig)
 
 	def draw_ray_aberrations(self, **kwargs):
 		"""
 		The draw_ray_aberrations function visualize the ray aberrations of the system.
 		"""
 		render = kwargs.get('render', False)
-		width = 8.5
+		width = 8
 		height = width / 1.5
 
 		params = {
-			'axes.labelsize': 14,
-			'legend.fontsize': 14,
-			'xtick.labelsize': 14,
-			'ytick.labelsize': 14,
-			'text.usetex': False,
+			'axes.labelsize': 12,
+			'legend.fontsize': 12,
+			'text.color': 'white',
+			'xtick.color': 'white',
+			'ytick.color': 'white',
+			'axes.labelcolor': 'white',
+			'xtick.labelcolor': 'white',
+			'ytick.labelcolor': 'white',
+			'legend.facecolor': 'white',
+			'axes.edgecolor': 'white',
+			'xtick.labelsize': 12,
+			'ytick.labelsize': 12,
+			'text.usetex': True,
 			'axes.axisbelow': False,
 			'figure.figsize': [width, height]
 		}
@@ -544,23 +562,29 @@ class OpticalSystem(object):
 					rho_s, a_s = zip(*sorted(zip(list(rho_x[self.mapSP]) + [0], list(x[self.mapSP] - xc) + [0])))
 					axs[i, 0].plot(rho_m, 1000 * np.array(a_m), c=sline.color, lw=1)
 					axs[i, 1].plot(rho_s, 1000 * np.array(a_s), c=sline.color, lw=1)
+					axs[i, 0].set_facecolor('xkcd:salmon')
+					axs[i, 0].set_facecolor((0., 0., 0.))
+					axs[i, 1].set_facecolor('xkcd:salmon')
+					axs[i, 1].set_facecolor((0., 0., 0.))
 
 			axs[i, 0].set_title('Meridional ray fan', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 			axs[i, 0].set_xlabel('Entrance height (normalized)', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 			axs[i, 0].set_ylabel(
-				r'Transverse ray aberration[$\mu m$]',
+				'Transverse ray aberration[microns]',
 				fontdict={'fontsize': 12, 'fontweight': 'medium'}
 			)
 
 			axs[i, 1].set_title('Sagittal ray fan', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 			axs[i, 1].set_xlabel('Entrance height (normalized)', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 			axs[i, 1].set_ylabel(
-				r'Transverse ray aberration[$\mu m$]',
+				'Transverse ray aberration[microns]',
 				fontdict={'fontsize': 12, 'fontweight': 'medium'}
 			)
 
 		if render:
 			plt.show()
+		else:
+			return mpld3.fig_to_html(fig, no_extras=True)
 
 	def show(self, **kwargs):
 		"""
@@ -570,20 +594,20 @@ class OpticalSystem(object):
 		show_vectors_on_surface = kwargs.get('show_vectors_on_surface', False)
 		fstd = kwargs.get('first_surf_to_draw', 0)
 		lstd = kwargs.get('last_surf_to_draw', len(self.surfaces))
-		width = 10.5
-		height = width / 2.3
+		# width = 10.5
+		# height = width / 2.3
 
-		params = {
-			'axes.labelsize': 12,
-			'legend.fontsize': 12,
-			'xtick.labelsize': 12,
-			'ytick.labelsize': 12,
-			'text.usetex': False,
-			'axes.axisbelow': False,
-			'figure.figsize': [width, height]
-		}
-		plt.rcParams.update(params)
-		plt.style.use('fivethirtyeight')
+		# params = {
+		# 	'axes.labelsize': 12,
+		# 	'legend.fontsize': 12,
+		# 	'xtick.labelsize': 12,
+		# 	'ytick.labelsize': 12,
+		# 	'text.usetex': False,
+		# 	'axes.axisbelow': False,
+		# 	'figure.figsize': [width, height]
+		# }
+		# plt.rcParams.update(params)
+		# plt.style.use('fivethirtyeight')
 
 		N = 2050
 		M = 137
@@ -753,7 +777,10 @@ class OpticalSystem(object):
 		ax.set_xlim(xlimit)
 		ax.set_ylim(ylimit)
 
-		ax.set_title('Optical system')
+		ax.set_xlabel("axial coord. (z)")
+		ax.set_ylabel("transversal coord. (y)")
+
+		# ax.set_title('Optical system')
 
 		# render if it is true
 		if render:

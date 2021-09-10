@@ -6,7 +6,6 @@ const TOTALSURFS = 6;
 $(document).ready(function(){
   const elements = $tableID.find('tbody tr');
   var i = elements.length - 1;
-  console.log(i)
   if (i > 1)
     document.getElementById("submit").disabled = false;
   else
@@ -42,13 +41,18 @@ $('.table-add').on('click', 'button', () => {
   const newTr = `
   <tr class="hide">
     <td class="pt-3-half">` + i + `</td>
-    <td class="pt-3-half"><input type="number" name="position" value="0.0"></td>
-    <td class="pt-3-half"><input type="number" name="max_apt" value="0.0"></td>
+    <td class="pt-3-half"><input type="number" step="0.01" name="position" value="0.0"></td>
+    <td class="pt-3-half"><input type="number" step="0.01" name="max_apt" value="0.0"></td>
     <td class="pt-3-half">
       <select name="glass">` + options + `</select>
     </td>
-    <td class="pt-3-half"><input type="number" name="stg_pts_obj" value="0.0"></td>
-    <td class="pt-3-half"><input type="number" name="stg_pts_img" value="0.0"></td>
+    <td class="pt-3-half"><input type="number" step="0.01" name="stg_pts_obj" value="0.0"></td>
+    <td class="pt-3-half"><input type="number" step="0.01" name="stg_pts_img" value="0.0"></td>
+    <td>
+      <div class="form-check form-check-inline">
+        <input id="isReflective" class="form-check-input" type="checkbox" value="` + i + `" name="reflective">
+      </div>
+    </td>
     <td>
       <span class="table-remove"><button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-trash-alt"></i></button></span>
     </td>
@@ -64,10 +68,10 @@ $tableID.on('click', '.table-remove', function () {
   tableRows.forEach((row, currentIdx) => {
     if (row != $(this).parents('tr')[0] && currentIdx != 0 && currentIdx != tableRows.length - 1) {
       row.cells[0].innerHTML = newIdx;
+      row.cells[6].firstElementChild.firstElementChild.value = newIdx;
       newIdx++;
     }
   });
-  console.log(newIdx)
   if (newIdx <= 1)
     document.getElementById("submit").disabled = true;
   else

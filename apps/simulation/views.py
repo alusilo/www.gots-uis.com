@@ -7,9 +7,6 @@ from apps.simulation.models import Material
 
 from apps.simulation.gots.system import OpticalSystem
 
-from plotly.offline import plot
-import plotly.graph_objs as go
-
 # Create your views here.
 class SimulationList(generic.ListView):
 	template_name = 'simulation_list.html'
@@ -100,7 +97,8 @@ class RaytracingSimulation(generic.DetailView):
 		stop_radius = float(request.POST.get('aperture_radius'))
 		wavelengths = [float(val) for val in request.POST.getlist('wavelengths')]
 		fx, fy = (float(val) for val in request.POST.getlist('field_position'))
-
+		is_reflective = [int(val) for val in request.POST.getlist('reflective')]
+		print(is_reflective)
 		# print(request.META)
 
 		# print(materials)
@@ -134,14 +132,26 @@ class RaytracingSimulation(generic.DetailView):
 
 		system.add_source(source_position=(fx, fy))
 
+		reflective = []
 		for i in range(len(zeta)):
-			system.add_surface(
-				position=zeta[i],
-				stigmatic_pair=(d_obj[i], d_img[i]),
-				materials=(materials[i], materials[i+1]),
-				max_aperture=max_apt[i],
-				idx=i+1
-			)
+			if i+1 in is_reflective:
+				reflective.append(True)
+				system.add_surface(
+					is_reflective=True,
+					position=zeta[i],
+					stigmatic_pair=(d_obj[i], d_img[i]),
+					max_aperture=max_apt[i],
+					idx=i+1
+				)
+			else:
+				reflective.append(False)
+				system.add_surface(
+					position=zeta[i],
+					stigmatic_pair=(d_obj[i], d_img[i]),
+					materials=(materials[i], materials[i+1]),
+					max_aperture=max_apt[i],
+					idx=i+1
+				)
 
 		system.paraxial_parameters()
 
@@ -150,7 +160,9 @@ class RaytracingSimulation(generic.DetailView):
 		system.trace_chief_rays()
 		system.trace_rays()
 
-		simulation_html = system.show(first_surf_to_draw=first_surf_to_draw)
+		system_html = system.show(first_surf_to_draw=first_surf_to_draw)
+		spot_html = system.draw_spot_diagram()
+		raya_html = system.draw_ray_aberrations()
 
 		if request.user.is_anonymous:
 			user = None
@@ -177,6 +189,7 @@ class RaytracingSimulation(generic.DetailView):
 			'message': 'Configuration data fetched successfully',
 			'user': user,
 			'materials': self.materials,
+			'reflective': is_reflective,
 			'data': {
 				'rows': rows,
 				'obj_position': obj_position,
@@ -187,9 +200,11 @@ class RaytracingSimulation(generic.DetailView):
 				'stg_img_obj': stg_img_obj_plane,
 				'stg_obj_img': stg_obj_img_plane,
 				'stg_img_img': stg_img_img_plane,
-				'obj_glass': materials[0]
+				'obj_glass': materials[0],
 			},
-			'simulation_html': simulation_html,
+			'system_html': system_html,
+			'spot_html': spot_html,
+			'raya_html': raya_html,
 			'stop_x': px,
 			'stop_y': py,
 			'stop_z': stop_position,

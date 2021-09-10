@@ -63,6 +63,7 @@
                       <th class="text-center">Glass Material</th>
                       <th class="text-center">Stg point object</th>
                       <th class="text-center">Stg point image</th>
+                      <th class="text-center">reflective?</th>
                       <th class="text-center">Remove</th>
                     </tr>
                   </thead>
@@ -70,8 +71,8 @@
                     <!-- This is our clonable table line -->
                     <tr>
                       <td class="pt-3-half">OBJ</td>
-                      <td class="pt-3-half"><input type="number" name="obj_position" value="{% if data.obj_position %}{{data.obj_position}}{% else %}-1e8{% endif %}" required></td>
-                      <td class="pt-3-half"><input type="number" name="obj_aperture" value="{% if data.max_apt_obj %}{{data.max_apt_obj}}{% else %}10{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="obj_position" value="{% if data.obj_position %}{{data.obj_position}}{% else %}-1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="obj_aperture" value="{% if data.max_apt_obj %}{{data.max_apt_obj}}{% else %}10{% endif %}" required></td>
                       <td class="pt-3-half">
                         <select name="glass" required>
                           {% if data.obj_glass %}
@@ -93,15 +94,16 @@
                           {% endif %}
                         </select>
                       </td>
-                      <td class="pt-3-half"><input type="number" name="stg_obj_obj_plane" value="{% if data.stg_obj_obj %}{{data.stg_obj_obj}}{% else %}1e8{% endif %}" required></td>
-                      <td class="pt-3-half"><input type="number" name="stg_img_obj_plane" value="{% if data.stg_img_obj %}{{data.stg_img_obj}}{% else %}1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="stg_obj_obj_plane" value="{% if data.stg_obj_obj %}{{data.stg_obj_obj}}{% else %}1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="stg_img_obj_plane" value="{% if data.stg_img_obj %}{{data.stg_img_obj}}{% else %}1e8{% endif %}" required></td>
+                      <td></td>
                       <td></td>
                     </tr>
                     {% for item in data.rows %}
                     <tr class="hide">
                       <td class="pt-3-half">{{ forloop.counter }}</td>
-                      <td class="pt-3-half"><input type="number" name="position" value="{{item.position}}" required></td>
-                      <td class="pt-3-half"><input type="number" name="max_apt" value="{{item.max_aperture}}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="position" value="{{item.position}}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="max_apt" value="{{item.max_aperture}}" required></td>
                       <td class="pt-3-half">
                         <select name="glass" required>
                           {% for mat in materials %}
@@ -113,8 +115,17 @@
                           {% endfor %}
                         </select>
                       </td>
-                      <td class="pt-3-half"><input type="number" name="stg_pts_obj" value="{{item.stigmatic_obj}}" required></td>
-                      <td class="pt-3-half"><input type="number" name="stg_pts_img" value="{{item.stigmatic_img}}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="stg_pts_obj" value="{{item.stigmatic_obj}}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="stg_pts_img" value="{{item.stigmatic_img}}" required></td>
+                      <td>
+                        <div class="form-check form-check-inline">
+                          {% if forloop.counter in reflective %}
+                          <input id="isReflective" class="form-check-input" type="checkbox" value="{{ forloop.counter }}" name="reflective" checked>
+                          {% else %}
+                          <input id="isReflective" class="form-check-input" type="checkbox" value="{{ forloop.counter }}" name="reflective">
+                          {% endif %}
+                        </div>
+                      </td>
                       <td>
                         <span class="table-remove"><button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-trash-alt"></i></button></span>
                       </td>
@@ -123,11 +134,12 @@
                     <!-- This is our clonable table line -->
                     <tr class="hide">
                       <td class="pt-3-half">IMS</td>
-                      <td class="pt-3-half"><input type="number" name="img_position" value="{% if data.img_position %}{{data.img_position}}{% else %}1e8{% endif %}" required></td>
-                      <td class="pt-3-half"><input type="number" name="img_aperture" value="{% if data.max_apt_img %}{{data.max_apt_img}}{% else %}10{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="img_position" value="{% if data.img_position %}{{data.img_position}}{% else %}1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="img_aperture" value="{% if data.max_apt_img %}{{data.max_apt_img}}{% else %}10{% endif %}" required></td>
                       <td class="pt-3-half"></td>
-                      <td class="pt-3-half"><input type="number" name="stg_obj_img_plane" value="{% if data.stg_obj_img %}{{data.stg_obj_img}}{% else %}1e8{% endif %}" required></td>
-                      <td class="pt-3-half"><input type="number" name="stg_img_img_plane" value="{% if data.stg_img_img %}{{data.stg_img_img}}{% else %}1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="stg_obj_img_plane" value="{% if data.stg_obj_img %}{{data.stg_obj_img}}{% else %}1e8{% endif %}" required></td>
+                      <td class="pt-3-half"><input type="number" step="0.01" name="stg_img_img_plane" value="{% if data.stg_img_img %}{{data.stg_img_img}}{% else %}1e8{% endif %}" required></td>
+                      <td></td>
                       <td></td>
                     </tr>
                   </tbody>
@@ -162,19 +174,19 @@
                 <div class="form-row">
                   <div class="form-group col-md-3">
                     <label for="AperturePositionX">Position x</label>
-                    <input type="number" form="form" name="aperture_position" class="form-control" id="AperturePositionX" value="{% if stop_x %}{{stop_x}}{% else %}0.0{% endif %}" placeholder="x">
+                    <input type="number" step="0.01" form="form" name="aperture_position" class="form-control" id="AperturePositionX" value="{% if stop_x %}{{stop_x}}{% else %}0.0{% endif %}" placeholder="x">
                   </div>
                   <div class="form-group col-md-3">
                     <label for="AperturePositionY">Position y</label>
-                    <input type="number" form="form" name="aperture_position" class="form-control" id="AperturePositionY" value="{% if stop_y %}{{stop_y}}{% else %}0.0{% endif %}" placeholder="y">
+                    <input type="number" step="0.01" form="form" name="aperture_position" class="form-control" id="AperturePositionY" value="{% if stop_y %}{{stop_y}}{% else %}0.0{% endif %}" placeholder="y">
                   </div>
                   <div class="form-group col-md-3">
                     <label for="AperturePositionZ">Position z</label>
-                    <input type="number" form="form" name="aperture_position" class="form-control" id="AperturePositionZ" value="{% if stop_z %}{{stop_z}}{% else %}0.0{% endif %}" placeholder="z">
+                    <input type="number" step="0.01" form="form" name="aperture_position" class="form-control" id="AperturePositionZ" value="{% if stop_z %}{{stop_z}}{% else %}0.0{% endif %}" placeholder="z">
                   </div>
                   <div class="form-group col-md-3">
                     <label for="ApertureRadius">Radius</label>
-                    <input type="number" form="form" name="aperture_radius" class="form-control" id="ApertureRadius" value="{% if stop_radius %}{{stop_radius}}{% else %}1.0{% endif %}">
+                    <input type="number" step="0.01" form="form" name="aperture_radius" class="form-control" id="ApertureRadius" value="{% if stop_radius %}{{stop_radius}}{% else %}1.0{% endif %}">
                   </div>
                 </div>
               </div>
@@ -213,11 +225,11 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="FieldPositionX">x</label>
-                    <input type="number" form="form" name="field_position" class="form-control" id="FieldPositionX" value="{% if field_x %}{{field_x}}{% else %}0.0{% endif %}" placeholder="x">
+                    <input type="number" step="0.01" form="form" name="field_position" class="form-control" id="FieldPositionX" value="{% if field_x %}{{field_x}}{% else %}0.0{% endif %}" placeholder="x">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="FieldPositionY">y</label>
-                    <input type="number" form="form" name="field_position" class="form-control" id="FieldPositionY" value="{% if field_y %}{{field_y}}{% else %}0.0{% endif %}" placeholder="y">
+                    <input type="number" step="0.01" form="form" name="field_position" class="form-control" id="FieldPositionY" value="{% if field_y %}{{field_y}}{% else %}0.0{% endif %}" placeholder="y">
                   </div>
                 </div>
               </div>
@@ -251,16 +263,52 @@
         <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="VisualizationModalTitle">Visualization</h5>
+              <h5 class="modal-title" id="VisualizationModalTitle">Optical System</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              {{simulation_html|safe}}
+              {{system_html|safe}}
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-check"></i></button>
+              <a data-toggle="modal" href="#AberrationsModal" class="btn btn-primary">Show Aberrations</a><a data-toggle="modal" href="#SpotModal" class="btn btn-primary">Show Spot Diagram</a><button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-check"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spot Modal -->
+      <div class="modal fade" id="SpotModal" tabindex="-1" role="dialog" aria-labelledby="SpotModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="SpotModalTitle">Spot Diagram</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {{spot_html|safe}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aberrations Modal -->
+      <div class="modal fade" id="AberrationsModal" tabindex="-1" role="dialog" aria-labelledby="AberrationsModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="AberrationsModalTitle">Ray Aberrations</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {{raya_html|safe}}
             </div>
           </div>
         </div>

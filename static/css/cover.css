@@ -117,7 +117,8 @@ body {
 /*
  * Modal
  */
-#ConfigModal .modal-content, #VisualizationModal .modal-content, main .card {
+.modal-content,
+main .card {
   background-color: #333!important;
 }
 
