@@ -154,7 +154,7 @@
             <h3>Simulación</h3>
             <p class="lead mb-0">Simulaciones interactivas de fenomenos físicos relacionados con la luz!</p>
             <br>
-            <button type="submit" class="btn btn-block btn-lg btn-success">Visitar</button>
+            <button class="btn btn-block btn-lg btn-success" onclick="go_to_simulations()">Visitar</button>
           </div>
         </div>
       </div>
@@ -312,7 +312,11 @@
   function go_to_admin_panel()
   {
     location.href = "/admin";
-  } 
+  }
+  function go_to_simulations()
+  {
+    location.href = "{% url 'simulations' %}"
+  }
   </script>
 
 </body>
