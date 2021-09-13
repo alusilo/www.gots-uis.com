@@ -504,8 +504,8 @@ class OpticalSystem(object):
 						angle)
 					axs[i].plot(xp, yp, '-', lw=1, c=sline.color)
 
-			axs[i].set_xlabel('x[microns]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
-			axs[i].set_ylabel('y[microns]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
+			axs[i].set_xlabel('x (microns)', fontdict={'fontsize': 12, 'fontweight': 'medium'})
+			axs[i].set_ylabel('y (microns)', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 
 			axs[i].set_aspect('equal')
 
@@ -568,14 +568,14 @@ class OpticalSystem(object):
 			axs[i, 0].set_title('Meridional ray fan', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 			axs[i, 0].set_xlabel('Entrance height (normalized)', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 			axs[i, 0].set_ylabel(
-				'Transverse ray aberration[microns]',
+				'Transverse ray aberration (microns)',
 				fontdict={'fontsize': 12, 'fontweight': 'medium'}
 			)
 
 			axs[i, 1].set_title('Sagittal ray fan', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 			axs[i, 1].set_xlabel('Entrance height (normalized)', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 			axs[i, 1].set_ylabel(
-				'Transverse ray aberration[microns]',
+				'Transverse ray aberration (microns)',
 				fontdict={'fontsize': 12, 'fontweight': 'medium'}
 			)
 
