@@ -504,8 +504,8 @@ class OpticalSystem(object):
 						angle)
 					axs[i].plot(xp, yp, '-', lw=1, c=sline.color)
 
-			axs[i].set_xlabel(r'x[microns]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
-			axs[i].set_ylabel(r'y[microns]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
+			axs[i].set_xlabel('x[microns]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
+			axs[i].set_ylabel('y[microns]', fontdict={'fontsize': 12, 'fontweight': 'medium'})
 
 			axs[i].set_aspect('equal')
 
