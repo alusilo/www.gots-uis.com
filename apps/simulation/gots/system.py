@@ -473,8 +473,6 @@ class OpticalSystem(object):
 			'xtick.color': 'white',
 			'ytick.color': 'white',
 			'axes.labelcolor': 'white',
-			'xtick.labelcolor': 'white',
-			'ytick.labelcolor': 'white',
 			'legend.facecolor': 'white',
 			'axes.edgecolor': 'white',
 			'xtick.labelsize': 12,
