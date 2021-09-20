@@ -29,7 +29,7 @@
     "model": "home.menuitem",
     "pk": 2,
     "fields": {
-      "name": "Acerca de Nosotros",
+      "name": "Quiénes somos",
       "url": "/about/",
       "menu": 1
     }

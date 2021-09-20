@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # user defined paths
     path('', include('apps.home.urls')),
+    path('u/', include('apps.user.urls')),
     path('blog/', include('apps.blog.urls')),
     path('research/', include('apps.research.urls')),
     path('simulations/', include('apps.simulation.urls')),

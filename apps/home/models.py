@@ -5,6 +5,7 @@ class Configuration(models.Model):
 	admin_name = models.CharField(max_length=45)
 	admin_email = models.CharField(max_length=45)
 	group_logo = models.ImageField(upload_to='img')
+	group_banner = models.ImageField(upload_to='img')
 	about = models.TextField()
 
 	def __str__(self):

@@ -48,7 +48,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=45, null=True, blank=True)
     username = models.CharField(verbose_name='username', max_length=45, unique=True)
     school = models.CharField(max_length=45)
-    description = models.TextField()
+    description = models.TextField(max_length=200)
+    html_page = models.TextField()
     email = models.EmailField(
         verbose_name='email address',
         max_length=45,
@@ -58,6 +59,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     date_of_birth = models.DateField(null=True, blank=True)
+    date_joined = models.DateTimeField(auto_now_add=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 

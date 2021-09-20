@@ -69,11 +69,11 @@
       <div class="row">
         <div class="col-md-8 pl-0 pr-0 card mb-4 mt-3 left top">
           <div class="card-body">
-            <h1>{% block title %} Acerca del grupo {% endblock title %}</h1>
+            <h1>{% block title %} Quiénes somos {% endblock title %}</h1>
             <p class="card-text ">{{ data.configuration.about | safe }}</p>
           </div>
         </div>
-        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+        <!-- Reservado para colocar algo -->
         {% if users %}
         <div class="col-md-8 card mb-4  mt-3 ">
           <div class="card-body">
@@ -83,7 +83,7 @@
               {% for user in users %}
               <div class="list-group-item">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1"><a href=""><i class="fas fa-user"></i> {{ user.first_name }} {{ user.last_name }}</a></h5>
+                  <h5 class="mb-1"><a href="{% url 'user_detail' user.pk %}"><i class="fas fa-user"></i> {{ user.first_name }} {{ user.last_name }}</a></h5>
                   <small class="text-muted">{{ user.date_joined }}</small>
                 </div>
                 <p class="mb-1">{{ user.description | safe }}</p>
