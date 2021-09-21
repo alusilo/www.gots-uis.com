@@ -2,7 +2,7 @@ from django.db import models
 from apps.user.models import User
 from django.template.defaultfilters import truncatechars
 from django.conf import settings
-from froala_editor.fields import FroalaField
+from django_editorjs import EditorJsField
 
 from apps.blog.storage import OverwriteStorage
 
@@ -26,7 +26,7 @@ class Post(models.Model):
 	abstract = models.TextField('Resumen', blank=True, null=True)
 	image = models.ImageField('Imagen (1200x400)', upload_to=post_image_filename, storage=OverwriteStorage())
 	updated_on = models.DateTimeField('Fecha última actualización', auto_now=True)
-	content = FroalaField(blank=True)
+	content = EditorJsField(blank=True)
 	created_on = models.DateTimeField('Fecha de creación', auto_now_add=True)
 	status = models.IntegerField('Estado', choices=STATUS, default=0)
 	carousel_item = models.BooleanField('Mostrar en la página de inicio', default=False)

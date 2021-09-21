@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third-party apps
     'crispy_forms',
-    'froala_editor',
+    'django_editorjs',
     # user defined apps
     'apps.user.apps.UserConfig',
     'apps.home.apps.HomeConfig',
