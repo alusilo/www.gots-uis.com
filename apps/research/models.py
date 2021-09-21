@@ -1,4 +1,5 @@
 from django.db import models
+from froala_editor.fields import FroalaField
 
 from apps.user.models import User
 
@@ -11,7 +12,7 @@ class ResearchArea(models.Model):
 	slug = models.SlugField(max_length=200, unique=True)
 	description = models.TextField()
 	image = models.ImageField(upload_to='research/img')
-	content = models.TextField(blank=True, null=True)
+	content = FroalaField(blank=True)
 	updated_on = models.DateTimeField(auto_now=True)
 	created_on = models.DateTimeField(auto_now_add=True)
 	class Meta:
@@ -27,7 +28,7 @@ class Publication(models.Model):
 	area = models.ForeignKey(ResearchArea, on_delete=models.CASCADE)
 	slug = models.SlugField(max_length=200, unique=True)
 	abstract = models.TextField()
-	full_description = models.TextField(blank=True, null=True)
+	full_description = FroalaField(blank=True)
 	journal = models.CharField(max_length=200)
 	pub_date = models.DateField()
 	pdf_file = models.FileField(upload_to='research/publications/pdf', blank=True, null=True)

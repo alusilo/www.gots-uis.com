@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.views import generic
 from django.core.exceptions import ObjectDoesNotExist
+from django.template.defaultfilters import safe
 
 from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement
 from apps.user.models import User
+
 
 # Create your views here.
 class UserDetail(generic.DetailView):
@@ -50,7 +52,7 @@ class UserDetail(generic.DetailView):
 				'menu': menu_data
 			},
 			'user': user,
-			'user_info': user_info
+			'user_info': user_info,
 		}
 
 		return render(request, self.template_name, response)

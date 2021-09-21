@@ -2,6 +2,8 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from froala_editor.fields import FroalaField
+
 
 class UserManager(BaseUserManager):
     '''
@@ -49,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(verbose_name='username', max_length=45, unique=True)
     school = models.CharField(max_length=45)
     description = models.TextField(max_length=200)
-    html_page = models.TextField()
+    html_page = FroalaField(blank=True)
     email = models.EmailField(
         verbose_name='email address',
         max_length=45,

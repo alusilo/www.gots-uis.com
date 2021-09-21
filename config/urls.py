@@ -23,6 +23,8 @@ urlpatterns = [
     # django paths
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
+    # third-party paths
+    path('froala_editor/', include('froala_editor.urls')),
     # user defined paths
     path('', include('apps.home.urls')),
     path('u/', include('apps.user.urls')),
