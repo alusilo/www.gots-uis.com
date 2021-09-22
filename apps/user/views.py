@@ -6,6 +6,9 @@ from django.template.defaultfilters import safe
 from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement
 from apps.user.models import User
 
+import html
+import json
+
 
 # Create your views here.
 class UserDetail(generic.DetailView):

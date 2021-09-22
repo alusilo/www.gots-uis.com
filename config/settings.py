@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third-party apps
     'crispy_forms',
-    'django_editorjs',
     # user defined apps
     'apps.user.apps.UserConfig',
     'apps.home.apps.HomeConfig',

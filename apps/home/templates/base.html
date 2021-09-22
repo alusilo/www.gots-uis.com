@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Site: {{ data.configuration.group_name }}</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+  <!-- Custom fonts for this template -->
+  <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{% static 'css/landing-page.css' %}">
+
+</head>
+
+<body>
+  <!--- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="{{ data.configuration.group_logo.url }}" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          {% for item in data.menu.items %}
+          {% if item.elements %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{{item.url}}" id="navbarDropdownApps" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{item.name}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownApps">
+              {% for element in item.elements %}
+              <a class="dropdown-item" href="{{element.url}}">{{element.name}}</a>
+              {% endfor %}
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{item.url}}">{{item.name}}</a>
+            <!-- <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a> -->
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+          <button class="btn btn-success" type="button" onclick="go_to_admin_panel()">{% if user.is_authenticated %}Admin{% else %}Login{% endif %}</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+   
+  <!-- News -->
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item">
+              <a href="#">About</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Contact</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2020. All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-facebook fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-instagram fa-2x fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script>
+  function go_to_jitsi()
+  {
+    location.href = "https://meet.gots-uis.com";
+  }
+  function go_to_owncloud()
+  {
+    location.href = "https://cloud.gots-uis.com";
+  }
+  function go_to_admin_panel()
+  {
+    location.href = "/admin";
+  } 
+  </script>
+
+  {% block javascript %}{% endblock %}
+  
+  {% block extrahead %}
+  <script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+  {{ block.super }}
+  {% endblock %}
+
+</body>
+
+</html>
