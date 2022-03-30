@@ -62,16 +62,61 @@
       </div>
     </div>
   </nav>
-   
-  <!-- News -->
-  {% block content %}{% endblock %}
+
+  <!-- Intro -->
+  <section class="introduction">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 pl-0 pr-0 card mb-4 mt-3 left top">
+          <div class="card-body">
+            <h1>{% block title %} Integrantes del grupo {% endblock title %}</h1>
+            <p class="card-text ">Las personas que pertenecen al Grupo de Óptica y Tratamiento de Señales de la Universidad Industrial de Santander trabajan con mucha dedicación en cada una de las áreas de investigación a la cual pertenecen. Adicionalmente, nuestros integrantes brindan soporte a cada uno de los estudiantes que se encuentran en formación. Estas personas están capacitadas de manera única, con su propia historia y un bagaje bastante amplio en el área de la óptica.</p>
+          </div>
+        </div>
+        <!-- Reservado para colocar algo -->
+        {% if users %}
+        <div class="col-md-8 card mb-4  mt-3 ">
+          <div class="card-body">
+            <!-- comments -->
+            <h2>Lista de integrantes</h2>
+            <div class="btn-group" role="group" aria-label="Filter">
+              <button class="btn btn-outline-success filter-button active" data-filter="all">Todos</button>
+              {% for role in roles %}
+              <button class="btn btn-outline-success filter-button" data-filter="{{role.0}}">{{role.1}}</button>
+              {% endfor %}
+            </div>
+            <div class="card pt-3">
+              {% for user in users %}
+              <div class="card mb-3 filter {{user.role}}">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="{% if user.picture %}{{ user.picture.url }}{% else %}/media/img/user.png{% endif %}" class="card-img" alt="Picture">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title"><a href="{% url 'user_detail' user.pk %}"><i class="fas fa-user"></i> {{ user.first_name }} {{ user.last_name }}</a></h5>
+                      <p class="card-text">{{ user.description | safe }}</p>
+                      <small class="text-muted"><i class="far fa-building"></i> {{ user.school }} | <i class="far fa-envelope"></i> <a href="mailto:{{ user.email }}">{{ user.email }}</a> {% if user.phone_number %}| <i class="far fa-phone"></i> <a href="tel:{{ user.phone_number }}">{{ user.phone_number }}</a>{% endif %}</small>
+                      <p class="card-text"><small class="text-muted">Usuario desde {{ user.date_joined.date }}</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-          <ul class="list-inline mb-2">
+          <!-- <ul class="list-inline mb-2">
             <li class="list-inline-item">
               <a href="#">About</a>
             </li>
@@ -87,8 +132,8 @@
             <li class="list-inline-item">
               <a href="#">Privacy Policy</a>
             </li>
-          </ul>
-          <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2020. All Rights Reserved.</p>
+          </ul> -->
+          <p class="text-muted small mb-4 mb-lg-0">&copy; GOTS 2021. All Rights Reserved.</p>
         </div>
         <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
           <ul class="list-inline mb-0">
@@ -117,9 +162,6 @@
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
   <script>
   function go_to_jitsi()
   {
@@ -132,7 +174,28 @@
   function go_to_admin_panel()
   {
     location.href = "/admin";
-  } 
+  }
+  $(document).ready(function(){
+    $(".filter-button").click(function(){
+      var value = $(this).attr('data-filter');
+      if(value == "all")
+      {
+        $('.filter').removeClass('hidden');
+        $('.filter').show('3000');
+      }
+      else
+      {
+        $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+        $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+        $(".filter").not('.'+value).hide('3000');
+        $('.filter').filter('.'+value).show('3000');
+      }
+      if ($(".filter-button").removeClass("active")) {
+        $(this).removeClass("active");
+      }
+      $(this).addClass("active");
+    });
+  });
   </script>
 
 </body>

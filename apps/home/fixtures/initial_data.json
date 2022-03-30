@@ -29,8 +29,8 @@
     "model": "home.menuitem",
     "pk": 2,
     "fields": {
-      "name": "Quiénes somos",
-      "url": "/about/",
+      "name": "Integrantes",
+      "url": "/people/",
       "menu": 1
     }
   },
@@ -47,8 +47,8 @@
     "model": "home.menuitem",
     "pk": 4,
     "fields": {
-      "name": "Áreas de Investigación",
-      "url": "/research/",
+      "name": "Educación",
+      "url": "",
       "menu": 1
     }
   },
@@ -56,14 +56,32 @@
     "model": "home.menuitem",
     "pk": 5,
     "fields": {
-      "name": "Noticias",
-      "url": "/blog/",
+      "name": "Quiénes somos",
+      "url": "/about/",
       "menu": 1
     }
   },
   {
     "model": "home.menuitemelement",
     "pk": 1,
+    "fields": {
+      "name": "Áreas de Investigación",
+      "url": "/research/",
+      "menu_item": 4
+    }
+  },
+  {
+    "model": "home.menuitemelement",
+    "pk": 2,
+    "fields": {
+      "name": "Noticias",
+      "url": "/blog/",
+      "menu_item": 4
+    }
+  },
+  {
+    "model": "home.menuitemelement",
+    "pk": 3,
     "fields": {
       "name": "Servicio de videoconferencia",
       "url": "https://meet.gots-uis.com",
@@ -72,7 +90,7 @@
   },
   {
     "model": "home.menuitemelement",
-    "pk": 2,
+    "pk": 4,
     "fields": {
       "name": "Servicio de almacenamiento",
       "url": "https://cloud.gots-uis.com",
@@ -81,7 +99,7 @@
   },
   {
     "model": "home.menuitemelement",
-    "pk": 3,
+    "pk": 5,
     "fields": {
       "name": "Simulaciones",
       "url": "/simulations/",

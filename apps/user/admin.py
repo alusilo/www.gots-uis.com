@@ -1,11 +1,11 @@
 from django import forms
 from django.contrib import admin
-from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 
 from apps.user.models import User
+
 
 # Register your models here.
 class UserCreationForm(forms.ModelForm):
@@ -30,21 +30,23 @@ class UserCreationForm(forms.ModelForm):
 			user.save()
 		return user
 
+
 class UserChangeForm(forms.ModelForm):
 	password = ReadOnlyPasswordHashField()
 
 	class Meta:
 		model = User
-		fields = ('email', 'password', 'is_active', 'is_superuser')
+		fields = ('email', 'password', 'is_active', 'is_superuser', 'role')
+
 
 class UserAdmin(BaseUserAdmin):
 	form = UserChangeForm
 	add_form = UserCreationForm
-	list_display = ('email', 'is_active', 'is_staff', 'is_superuser')
+	list_display = ('email', 'is_active', 'is_staff', 'is_superuser', 'role')
 	fieldsets = (
 		(None, {'fields': ('email', 'username', 'password')}),
-		('Personal info', {'fields': ('first_name', 'last_name', 'date_of_birth', 'school', 'description', 'html_page', )}),
-		('Permissions', {'fields': ('groups', 'is_superuser', 'is_staff', 'is_active')}),
+		('Personal info', {'fields': ('first_name', 'last_name', 'date_of_birth', 'picture', 'phone_number', 'school', 'office_number', 'description', 'html_page', )}),
+		('Permissions', {'fields': ('role', 'groups', 'is_superuser', 'is_staff', 'is_active')}),
 	)
 	add_fieldsets = (
 		(None, {
@@ -52,10 +54,11 @@ class UserAdmin(BaseUserAdmin):
 			'fields': ('email', 'password1', 'password2'),
 		}),
 	)
-	list_filter = ('email', 'is_active',)
-	search_fields = ['email', 'username']
+	list_filter = ('role', 'is_active', 'is_superuser',)
+	search_fields = ['email', 'username', 'role']
 	ordering = ('email',)
-	fielter_horizontal = ()
+	filter_horizontal = ()
+
 
 admin.site.register(User, UserAdmin)
 # admin.site.register(Group)

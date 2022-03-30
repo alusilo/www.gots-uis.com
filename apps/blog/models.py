@@ -1,9 +1,8 @@
 from django.db import models
 from apps.user.models import User
 from django.template.defaultfilters import truncatechars
-from django.conf import settings
 
-from apps.blog.storage import OverwriteStorage
+from config.storage import OverwriteStorage
 
 import uuid
 
@@ -12,9 +11,11 @@ STATUS = (
 	(1, "Publish")
 )
 
+
 def post_image_filename(instance, file):
 	filename, extension = file.split('.')
 	return 'blog/{}.{}'.format(instance.pk, extension)
+
 
 # Create your models here.
 class Post(models.Model):
@@ -39,6 +40,7 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
 
 class Comment(models.Model):
 	post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')

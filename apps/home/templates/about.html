@@ -73,27 +73,6 @@
             <p class="card-text ">{{ data.configuration.about | safe }}</p>
           </div>
         </div>
-        <!-- Reservado para colocar algo -->
-        {% if users %}
-        <div class="col-md-8 card mb-4  mt-3 ">
-          <div class="card-body">
-            <!-- comments -->
-            <h1>Integrantes del grupo</h1>
-            <div class="list-group">
-              {% for user in users %}
-              <div class="list-group-item">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1"><a href="{% url 'user_detail' user.pk %}"><i class="fas fa-user"></i> {{ user.first_name }} {{ user.last_name }}</a></h5>
-                  <small class="text-muted">{{ user.date_joined }}</small>
-                </div>
-                <p class="mb-1">{{ user.description | safe }}</p>
-                <small class="text-muted"><i class="far fa-building"></i> {{ user.school }} | <i class="far fa-envelope"></i> <a href="mailto:{{ user.email }}">{{ user.email }}</a></small>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-        {% endif %}
       </div>
     </div>
   </section>

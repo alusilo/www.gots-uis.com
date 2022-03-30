@@ -1,0 +1,23 @@
+{% block user_side_panel %}
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4 float-right ">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{% if user_info.picture %}{{ user_info.picture.url }}{% else %}/media/img/user.png{% endif %}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ user_info.first_name }} {{ user_info.last_name }}</h5>
+            <p class="text-muted"><i class="far fa-building"></i> {{ user_info.school }}</p>
+            <p class="text-muted"><i class="far fa-envelope"></i> <a href="mailto:{{ user_info.email }}">{{ user_info.email }}</a></p>
+            {% if user_info.phone_number %}
+            <p class="text-muted"><i class="far fa-phone"></i> <a href="tel:{{ user_info.phone_number }}">{{ user_info.phone_number }}</a></p>
+            {% endif %}
+            {% if user_info.office_number %}
+            <p class="text-muted"><i class="far fa-briefcase"></i> {{ user_info.office_number }}</p>
+            {% endif %}
+            <h5>Información</h5>
+            <p class="card-text">{{ user.description | safe }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock user_side_panel %}

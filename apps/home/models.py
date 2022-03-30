@@ -1,11 +1,13 @@
 from django.db import models
+from config.storage import OverwriteStorage
+
 
 class Configuration(models.Model):
 	group_name = models.CharField(max_length=45)
 	admin_name = models.CharField(max_length=45)
 	admin_email = models.CharField(max_length=45)
 	group_logo = models.ImageField(upload_to='img')
-	group_banner = models.ImageField(upload_to='img')
+	group_banner = models.ImageField(upload_to='img', default='/img/baner.jpg', storage=OverwriteStorage())
 	about = models.TextField()
 
 	def __str__(self):
@@ -18,6 +20,7 @@ class Menu(models.Model):
 	def __str__(self):
 		return self.name
 
+
 class MenuItem(models.Model):
 	name = models.CharField(max_length=45)
 	url = models.CharField(max_length=200)
@@ -28,6 +31,7 @@ class MenuItem(models.Model):
 
 	def __str__(self):
 		return "%s > %s" % (self.menu.name, self.name)
+
 
 class MenuItemElement(models.Model):
 	name = models.CharField(max_length=45)
