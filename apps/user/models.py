@@ -78,7 +78,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(verbose_name='phone number', max_length=13, null=True, blank=True)
     office_number = models.CharField(verbose_name='office number', max_length=10, null=True, blank=True)
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=True, null=True)
-    picture = models.ImageField('Foto', upload_to=post_image_filename, storage=OverwriteStorage(), null=True)
+    picture = models.ImageField(upload_to=post_image_filename, storage=OverwriteStorage(), null=True, blank=True)
     school = models.CharField(max_length=45)
     description = models.TextField(max_length=200)
     html_page = models.TextField(blank=True)
