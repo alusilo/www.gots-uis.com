@@ -2,7 +2,7 @@
 
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4 float-right ">
-    <div class="card" style="width: 18rem;">
+    <div class="card">
         <img class="card-img-top" src="{% if user_info.picture %}{{ user_info.picture.url }}{% else %}/media/img/user.png{% endif %}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ user_info.first_name }} {{ user_info.last_name }}</h5>
