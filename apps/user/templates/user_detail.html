@@ -10,7 +10,7 @@
           <h1>{% block title %} {{ user_info.first_name }} {{ user_info.last_name }} {% endblock title %}</h1>
           <p></p>
           <p class="card-text">{{user_info.description}}</p>
-          <p class=" text-muted">Miembro desde <strong>{{user_info.date_joined}}</strong></p>
+          <p class=" text-muted">Miembro del grupo desde <strong>{{user_info.date_joined.date}}</strong></p>
           {{user_info.html_page|safe}}
         </div>
       </div>
