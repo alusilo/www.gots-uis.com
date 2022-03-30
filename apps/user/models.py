@@ -51,18 +51,15 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     PROFESSOR = 0
-    ASSOCIATED_PROFESSOR = 1
-    ASSISTANT_PROFESSOR = 2
-    POSTDOC = 3
-    PHD_STUDENT = 4
-    MSC_STUDENT = 5
-    BSC_STUDENT = 6
-    SUPPORT_STAFF = 7
-    GUEST = 8
+    POSTDOC = 2
+    PHD_STUDENT = 3
+    MSC_STUDENT = 4
+    BSC_STUDENT = 5
+    SUPPORT_STAFF = 6
+    GUEST = 7
 
     ROLE_CHOICES = (
         (PROFESSOR, 'Profesor'),
-        (ASSOCIATED_PROFESSOR, 'Profesor Asociado'),
         (POSTDOC, 'Investigador Postdoctoral'),
         (PHD_STUDENT, 'Estudiante de Doctorado'),
         (MSC_STUDENT, 'Estudiante de Maestría'),
