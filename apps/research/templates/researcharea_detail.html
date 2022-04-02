@@ -5,7 +5,7 @@
 <section class="introduction">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 pl-0 pr-0 card mb-4 mt-3 left top">
+      <div class="col-md-12 card px-0 mt-4">
         <img class="card-img-top" src="{{ researcharea.image.url }}" alt="Card image cap">
         <div class="card-body">
           <h1>{% block title %} {{ researcharea.area }} {% endblock title %}</h1>
@@ -13,13 +13,12 @@
           <p class="card-text ">{{ researcharea.content | safe }}</p>
         </div>
       </div>
-      {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
       {% if researches %}
-      <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="col-md-12 card mt-4">
         <div class="card-body">
           <!-- comments -->
           <h1>Trabajos de investigacion</h1>
-          <div class="list-group">
+          <div class="list-group mt-4">
           {% for research in researches %}
           <div class="list-group-item">
             <div class="d-flex w-100 justify-content-between">
@@ -37,14 +36,5 @@
     </div>
   </div>
 </section>
-
-<a href="#" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1"><a href="">{{ research.title }}</a></h5>
-                <small class="text-muted">{{ research.pub_date }}</small>
-              </div>
-              <p class="mb-1">{% for author in research.author.all %}{{ author.last_name }}, {{ author.first_name }}; {% endfor %}</p>
-              <small class="text-muted"></small>
-            </a>
 
 {% endblock content %}

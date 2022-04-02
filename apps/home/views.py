@@ -51,6 +51,7 @@ class HomeView(TemplateView):
 			},
 			'user': user,
 			'carousel_items': Post.objects.all().filter(carousel_item=True),
+			'post_list': Post.objects.all().order_by('-created_on')[:5],
 			'research_areas': ResearchArea.objects.all()
 		}
 

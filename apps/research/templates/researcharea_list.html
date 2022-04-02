@@ -1,5 +1,6 @@
 {% extends "base.html" %} 
-{% block content %}
+
+{% block panel %}
 
 <header class="masthead">
     <div class="overlay"></div>
@@ -7,26 +8,27 @@
         <div class="row">
             <div class="col-md-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h2 class=" site-heading my-4 mt-3 text-white"> Bienvenidos al área de investigaciones del GOTS </h2>
-                    <p class="lead mb-0 text-white">En este espacio encontraras todo lo referente a las investigaciones llevadas a cabo por parte de los integrantes del grupo! &nbsp
-                    </p>
+                    <h1 class=" site-heading my-4 mt-3 text-white">{% block title %} Áreas de investigación del GOTS {% endblock %}</h1>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+{% endblock %}
+
+{% block content %}
+
 <section class="introduction">
     <div class="container">
         <div class="row">
             <!-- Blog Entries Column -->
-            <div class="col-md-8 mt-4 left">
+            <div class="col-md-12">
                 {% if researcharea_list %}
                 {% for item in researcharea_list %}
-                <div class="card mb-4">
+                <div class="card mt-4">
                     <div class="card-body">
                         <h2 class="card-title">{{ item.area }}</h2>
-                        <p class="card-text text-muted h6"> {{ item.created_on}} </p>
                         <p class="card-text">{{item.description}}</p>
                         <a href="{% url 'researcharea_detail' item.slug  %}" class="btn btn-success">Leer Más &rarr;</a>
                     </div>
@@ -39,7 +41,6 @@
                 </div>
                 {% endif %}
             </div>
-            {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
         </div>
     </div>
 </section>
