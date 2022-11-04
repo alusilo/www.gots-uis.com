@@ -37,8 +37,44 @@ header.masthead .overlay {
   opacity: 0.3;
 }
 
-header.masthead h1 {
-  font-size: 2rem;
+.carousel-item img {
+    height: auto;
+    width: 100%;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    header.masthead h1, .carousel-caption h1 {
+        font-size: 1rem!important;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    header.masthead h1, .carousel-caption h1 {
+        font-size: 1rem!important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    header.masthead h1, .carousel-caption h1 {
+        font-size: 1.5rem!important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    header.masthead h1, .carousel-caption h1 {
+        font-size: 2rem!important;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    h2 {
+        font-size: 2.5rem!important;
+    }
 }
 
 @media (min-width: 768px) {
@@ -46,8 +82,8 @@ header.masthead h1 {
     padding-top: 12rem;
     padding-bottom: 12rem;
   }
-  header.masthead h1 {
-    font-size: 3rem;
+  h2 {
+    font-size: 1.5rem!important;
   }
 }
 
@@ -94,19 +130,9 @@ header.masthead h1 {
   font-size: 5rem;
 }
 
-.about {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.introduction {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
-}
-
-.testimonials {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+.about, .introduction, .testimonials {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .testimonials .testimonial-item {
@@ -142,7 +168,7 @@ footer.footer {
   padding-bottom: 4rem;
 }
 
-.card{
+.card {
   box-shadow: 0 16px 48px #E3E7EB;
 }
 

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.core.exceptions import ObjectDoesNotExist
 
-from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement
+from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement, SeminarEvent
 from apps.blog.models import Post
 from apps.user.models import User
 from apps.research.models import ResearchArea
@@ -51,7 +51,9 @@ class HomeView(TemplateView):
 			},
 			'user': user,
 			'carousel_items': Post.objects.all().filter(carousel_item=True),
-			'research_areas': ResearchArea.objects.all()
+			'post_list': Post.objects.all().order_by('-created_on')[:5],
+			'research_areas': ResearchArea.objects.all(),
+			'seminar_events': SeminarEvent.objects.all().order_by('starting_date')[:2]
 		}
 
 		return render(request, self.template_name, response)

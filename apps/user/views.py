@@ -1,13 +1,10 @@
 from django.shortcuts import render
 from django.views import generic
-from django.core.exceptions import ObjectDoesNotExist
-from django.template.defaultfilters import safe
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from django.http import Http404
 
 from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement
 from apps.user.models import User
-
-import html
-import json
 
 
 # Create your views here.
@@ -16,6 +13,7 @@ class UserDetail(generic.DetailView):
 
 	def get(self, request, *args, **kwargs):
 		pk = self.kwargs.get("pk")
+		
 		if request.user.is_anonymous:
 			user = None
 		else:
@@ -46,16 +44,19 @@ class UserDetail(generic.DetailView):
 		except ObjectDoesNotExist:
 			menu_data = None
 
-		user_info = User.objects.get(pk=pk)
-		response = {
-			'success': 'true',
-			'message': 'Configuration data fetched successfully',
-			'data': {
-				'configuration': configuration,
-				'menu': menu_data
-			},
-			'user': user,
-			'user_info': user_info,
-		}
+		try:
+			user_info = User.objects.get(pk=pk)
+			response = {
+				'success': 'true',
+				'message': 'Configuration data fetched successfully',
+				'data': {
+					'configuration': configuration,
+					'menu': menu_data
+				},
+				'user': user,
+				'user_info': user_info,
+			}
 
-		return render(request, self.template_name, response)
+			return render(request, self.template_name, response)
+		except ValidationError:
+			raise Http404

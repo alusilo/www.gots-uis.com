@@ -7,7 +7,7 @@
 <section class="introduction">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 pl-0 pr-0 card mb-4 mt-3 left top">
+      <div class="col-md-12 card px-0 mt-4">
         <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
         <div class="card-body">
           <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
@@ -15,14 +15,13 @@
           <p class="card-text ">{{ post.content | safe }}</p>
         </div>
       </div>
-      {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
-      <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="col-md-12 card mt-4">
         <div class="card-body">
           <!-- comments -->
           <h2>{{ comments.count }} comments</h2>
 
           {% for comment in comments %}
-          <div class="comments" style="padding: 10px;">
+          <div class="comments">
             <p class="font-weight-bold">
               {{ comment.name }}
               <span class=" text-muted font-weight-normal">
@@ -34,7 +33,7 @@
           {% endfor %}
         </div>
       </div>
-      <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="col-md-12 card mt-4">
         <div class="card-body">
           {% if new_comment %}
           <div class="alert alert-success" role="alert">
