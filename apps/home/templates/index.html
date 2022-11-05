@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load tz %}
 
 {% block panel %}
   <!-- Carousel -->
@@ -63,34 +64,36 @@
   </section>
 
   <!-- Calendar -->
+  {% localtime on %}
   {% if seminar_events %}
-  <section class="text-center">
+  <section class="showcase bg-dark text-center text-white">
     <div class="container">
-        <h2 class="mb-5">Seminario</h2>
-        <div class="container">
-          {% for event in seminar_events %}
-          <div class="row row-striped">
-            <div class="col-2">
-              <h1 class="display-4"><span class="badge badge-secondary">{{event.starting_date.day}}</span></h1>
-              <h2>{{event.starting_date|date:"M"}}</h2>
-            </div>
-            <div class="col-10">
-              <h3 class="text-uppercase"><strong>{{event.title}}</strong></h3>
-              <ul class="list-inline">
-                  <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.starting_date|date:"l"}}</li>
-                <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{event.starting_date|time:"g:i A"}} - {{event.ending_date|time:"g:i A"}}</li>
-                <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{event.location}}</li>
-              </ul>
-              <p>{{event.description}}</p>
-            </div>
+      <h2 class="mb-5">Proximos seminarios</h2>
+      <div class="container">
+        {% for event in seminar_events %}
+        <div class="row row-striped">
+          <div class="col-2">
+            <h1 class="display-4"><span class="badge badge-success">{{event.starting_date|date:"d"}}</span></h1>
+            <h2>{{event.starting_date|date:"d M"}}</h2>
           </div>
-          {% endfor %}
+          <div class="col-10">
+            <h3 class="text-uppercase"><strong>{{event.title}}</strong></h3>
+            <ul class="list-inline">
+              <li class="list-inline-item"><i class="fa fa-calendar" aria-hidden="true"></i> {{event.starting_date|date:"l"}}</li>
+              <li class="list-inline-item"><i class="fa fa-clock" aria-hidden="true"></i> {{event.starting_date|time:"g:i A"}} - {{event.ending_date|time:"g:i A"}}</li>
+              <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{event.location}}</li>
+              <li class="list-inline-item"><i class="fa fa-user-tie" aria-hidden="true"></i> {{event.presented_by}}</li>
+            </ul>
+            <p>{{event.description}}</p>
+          </div>
         </div>
+        {% endfor %}
       </div>
     </div>
   </section>
   {% endif %}
-
+  {% endlocaltime %}
+  
   <!-- Applications -->
   <section class="features-icons bg-light text-center">
     <div class="container">
