@@ -13,7 +13,7 @@
         <div class="col-md-10 mx-auto">
           <div class="carousel-caption p-4" style="background-color: #222; opacity: 0.8; border: 1px solid #000">
             <h1 class="lead my-4 mt-3 text-white">{{item.title}}</h1>
-            <p class="lead d-none d-md-block text-white mb-4">{{ item.short_description }}</p>
+            <p class="lead d-none d-md-block text-center text-white mb-4">{{ item.short_description }}</p>
             <a class="btn btn-success" href="{% url 'post_detail' slug=item.slug %}">Ver más &raquo;</a>
           </div>
         </div>
@@ -82,7 +82,7 @@
               <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{event.location}}</li>
               <li class="list-inline-item"><i class="fa fa-user-tie" aria-hidden="true"></i> {{event.presented_by}}</li>
             </ul>
-            <p class="lead mb-4">{{event.description}}</p>
+            <p class="mb-4 text-center">{{event.description}}</p>
           </div>
         </div>
         {% endfor %}
@@ -103,7 +103,7 @@
               <i class="icon-screen-desktop m-auto text-primary"></i>
             </div>
             <h3>Video conferencias</h3>
-            <p class="mb-4">Servidor Jitsi disponible. Crea espacios virtuales para tus reuniones!</p>
+            <p class="text-center mb-4">Servidor Jitsi disponible. Crea espacios virtuales para tus reuniones!</p>
             <button class="btn btn-block btn-lg btn-success" onclick="go_to_jitsi()">Visitar</button>
           </div>
         </div>
@@ -113,7 +113,7 @@
               <i class="icon-layers m-auto text-primary"></i>
             </div>
             <h3>Almacenamiento</h3>
-            <p class="mb-4">Servicio de Owncloud. Manten tu información en un lugar seguro y a la mano!</p>
+            <p class="text-center mb-4">Servicio de Owncloud. Manten tu información en un lugar seguro y a la mano!</p>
             <button class="btn btn-block btn-lg btn-success" onclick="go_to_owncloud()">Visitar</button>
           </div>
         </div>
@@ -123,7 +123,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>
             <h3>Simulación</h3>
-            <p class="mb-4">Simulaciones interactivas de fenomenos físicos relacionados con la luz!</p>
+            <p class="text-center mb-4">Simulaciones interactivas de fenomenos físicos relacionados con la luz!</p>
             <button class="btn btn-block btn-lg btn-success disabled" aria-disabled="true">Visitar</button>
           </div>
         </div>

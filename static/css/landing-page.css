@@ -19,6 +19,10 @@ p {
   font-weight: 700;
 }
 
+p {
+  text-align: justify;
+}
+
 header.masthead {
   position: relative;
   background-color: #343a40;
