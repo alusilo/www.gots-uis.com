@@ -84,7 +84,8 @@
               <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{event.location}}</li>
               <li class="list-inline-item"><i class="fa fa-user-tie" aria-hidden="true"></i> {{event.presented_by}}</li>
             </ul>
-            <p>{{event.description}}</p>
+            <p class="lead mb-0">{{event.description}}</p>
+            <br>
           </div>
         </div>
         {% endfor %}
@@ -182,7 +183,7 @@
             <div class="card-body text-left">
               <a href="{% url 'post_detail' post.slug  %}">
                 <h2 class="card-title">{{ post.title }}</h2>
-                <p class="card-text">{{post.short_description}}</p></a>
+                <p class="card-text lead mb-0">{{post.short_description}}</p></a>
             </div>
           </div>
         </div>

@@ -29,7 +29,8 @@
                 <div class="card mt-4">
                     <div class="card-body">
                         <h2 class="card-title">{{ item.area }}</h2>
-                        <p class="card-text">{{item.description}}</p>
+                        <p class="card-text lead mb-0">{{item.description}}</p>
+                        <br>
                         <a href="{% url 'researcharea_detail' item.slug  %}" class="btn btn-success">Leer Más &rarr;</a>
                     </div>
                 </div>
@@ -37,7 +38,7 @@
                 {% else %}
                 <div class="alert alert-light" role="alert">
                     <h4 class="alert-heading">Nadie ha creado una entrada aun!</h4>
-                    <p>Para crear una entrada debes tener una cuenta, si la tienes te invito a que crees tu primera entrada.</p>
+                    <p class="lead mb-0">Para crear una entrada debes tener una cuenta, si la tienes te invito a que crees tu primera entrada.</p>
                 </div>
                 {% endif %}
             </div>
