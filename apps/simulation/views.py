@@ -7,6 +7,7 @@ from apps.simulation.models import Material
 
 from apps.simulation.gots.system import OpticalSystem
 
+
 # Create your views here.
 class SimulationList(generic.ListView):
 	template_name = 'simulation_list.html'
@@ -53,6 +54,7 @@ class SimulationList(generic.ListView):
 		}
 
 		return render(request, self.template_name, response)
+
 
 class RaytracingSimulation(generic.DetailView):
 	template_name = 'raytracing_detail.html'

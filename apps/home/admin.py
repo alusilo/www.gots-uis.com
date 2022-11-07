@@ -4,11 +4,15 @@ from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement
 
 
 class ConfigurationAdmin(admin.ModelAdmin):
-	fields = ['group_name', 'about', 'group_logo', 'group_banner', 'admin_name', 'admin_email']
+	fields = [
+		'group_name', 'about', 'group_logo',
+		'twitter_url', 'facebook_url', 'instagram_url',
+		'group_banner', 'admin_name', 'admin_email'
+	]
 
 	def has_add_permission(self, request):
 		count = Configuration.objects.all().count()
-		
+
 		if count == 0:
 			return True
 
@@ -20,7 +24,7 @@ class MenuAdmin(admin.ModelAdmin):
 
 	def has_add_permission(self, request):
 		count = Menu.objects.all().count()
-		
+
 		if count == 0:
 			return True
 

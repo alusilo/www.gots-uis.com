@@ -8,6 +8,9 @@ class Configuration(models.Model):
 	admin_email = models.CharField(max_length=45)
 	group_logo = models.ImageField(upload_to='img')
 	group_banner = models.ImageField(upload_to='img', default='/img/baner.jpg', storage=OverwriteStorage())
+	twitter_url = models.URLField(null=True)
+	facebook_url = models.URLField(null=True)
+	instagram_url = models.URLField(null=True)
 	about = models.TextField()
 
 	def __str__(self):

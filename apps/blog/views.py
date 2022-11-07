@@ -8,6 +8,7 @@ from apps.blog.models import Post, Comment
 
 from apps.blog.forms import CommentForm
 
+
 # Create your views here.
 class PostList(generic.ListView):
 	template_name = 'post_list.html'

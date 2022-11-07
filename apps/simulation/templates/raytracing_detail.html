@@ -76,21 +76,22 @@
                       <td class="pt-3-half">
                         <select name="glass" required>
                           {% if data.obj_glass %}
-                          {% for item in materials %}
-                          {% ifequal item.name data.obj_glass %}
-                          <option value="{{item.name}}" selected="selected">{{item.name}}</option>
+                            {% for item in materials %}
+                          {{item.name}}
+                              {% if item.name == data.obj_glass %}
+                              <option value="{{item.name}}" selected="selected">{{item.name}}</option>
+                              {% else %}
+                              <option value="{{item.name}}">{{item.name}}</option>
+                              {% endif %}
+                            {% endfor %}
                           {% else %}
-                          <option value="{{item.name}}">{{item.name}}</option>
-                          {% endifequal %}
-                          {% endfor %}
-                          {% else %}
-                          {% for item in materials %}
-                          {% ifequal item.name "AIR" %}
-                          <option value="{{item.name}}" selected="selected">{{item.name}}</option>
-                          {% else %}
-                          <option value="{{item.name}}">{{item.name}}</option>
-                          {% endifequal %}
-                          {% endfor %}
+                            {% for item in materials %}
+                              {% if item.name == "AIR" %}
+                              <option value="{{item.name}}" selected="selected">{{item.name}}</option>
+                              {% else %}
+                              <option value="{{item.name}}">{{item.name}}</option>
+                              {% endif %}
+                            {% endfor %}
                           {% endif %}
                         </select>
                       </td>
@@ -107,11 +108,11 @@
                       <td class="pt-3-half">
                         <select name="glass" required>
                           {% for mat in materials %}
-                          {% ifequal mat.name item.material %}
+                          {% if mat.name == item.material %}
                           <option value="{{mat.name}}" selected="selected">{{mat.name}}</option>
                           {% else %}
                           <option value="{{mat.name}}">{{mat.name}}</option>
-                          {% endifequal %}
+                          {% endif %}
                           {% endfor %}
                         </select>
                       </td>
@@ -239,8 +240,8 @@
                   <div class="form-group col-md-12">
                     <select class="form-control" form="form" name="show_from" id="ShowSelection">
                       {% if show_from %}
-                      <option value="0" {% ifequal show_from 0 %}selected{% endifequal %}>From object surface</option>
-                      <option value="1" {% ifequal show_from 1 %}selected{% endifequal %}>From first surface</option>
+                      <option value="0" {% if show_from == 0 %}selected{% endif %}>From object surface</option>
+                      <option value="1" {% if show_from == 1 %}selected{% endif %}>From first surface</option>
                       {% else %}
                       <option value="0" selected>From object surface</option>
                       <option value="1">From first surface</option>
