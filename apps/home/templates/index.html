@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load tz %}
 
 {% block panel %}
   <!-- Carousel -->
@@ -10,10 +11,9 @@
       <div class="carousel-item active">
         <img src="{{ item.image.url }}" class="img-fluid" alt="">
         <div class="col-md-10 mx-auto">
-          <div class="carousel-caption d-md-block p-4" style="background-color: #222; opacity: 0.8; border: 1px solid #000">
-            <h1>{{item.title}}</h1>
-            <p class="lead d-none d-md-block mb-0">{{ item.short_description }}</p>
-            <br>
+          <div class="carousel-caption p-4" style="background-color: #222; opacity: 0.8; border: 1px solid #000">
+            <h1 class="lead my-4 mt-3 text-white">{{item.title}}</h1>
+            <p class="lead d-none d-md-block text-center text-white mb-4">{{ item.short_description }}</p>
             <a class="btn btn-success" href="{% url 'post_detail' slug=item.slug %}">Ver más &raquo;</a>
           </div>
         </div>
@@ -37,9 +37,8 @@
       <div class="row">
         <div class="col-md-10 mx-auto">
           <div class="site-heading p-4" style="background-color: #222; opacity: 0.8; border: 1px solid #000">
-            <h1 class=" site-heading my-4 mt-3 text-white"> Bienvenidos al Grupo de Óptica y Tratamiento de Señales </h1>
-            <p class="lead d-none d-md-block mb-0 text-white">En la UIS se comenzó a incursionar en algunos aspectos de óptica desde 1972, cuando se creó el postgrado en Física.</p>
-            <br>
+            <h1 class="lead my-4 mt-3 text-white"> Bienvenidos al Grupo de Óptica y Tratamiento de Señales </h1>
+            <p class="lead d-none d-md-block text-white mb-4">En la UIS se comenzó a incursionar en algunos aspectos de óptica desde 1972, cuando se creó el postgrado en Física.</p>
             <a class="btn btn-success" href="/about/">Ver más &raquo;</a>
           </div>
         </div>
@@ -53,19 +52,50 @@
   <!-- Intro -->
   <section class="introduction text-center">
     <div class="container">
-      <h2 class="mb-5">Binevenidos al Grupo de Óptica y Tratamiento de Señales</h2>
+      <h2 class="lead mb-5">Binevenidos al Grupo de Óptica y Tratamiento de Señales</h2>
       <div class="row">
         <div class="col-lg-12">
-          <p class="lead mb-0">La Universidad Industrial de Santander cuenta con uno de los laboratorios de óptica de mayor prestigio de la región, el Grupo de Óptica y Tratamiento de Señales (GOTS). El GOTS cuenta con una infraestructura de punta y está conformado por un personal capacitado y sobresalientes en el área de óptica, entre los que se encuentran profesores, estudiantes de maestría y estudiantes de doctorado. En el GOTS nos encontramos interesados en estudiantes destacados que sedeen incursionar sus estudios en el área de óptica. Entre las lineas de investigación que manejamos se encuentran fibras ópticas, metrología óptica, nanometrología de materiales, procesamiento de señales, procesamiento óptico con materiales fotorrefractivos, tratamiento híbrido de señales, óptica cuántica y óptica teórica.</p>
+          <p class="lead d-none d-md-block mb-4">La Universidad Industrial de Santander cuenta con uno de los laboratorios de óptica de mayor prestigio de la región, el Grupo de Óptica y Tratamiento de Señales (GOTS). El GOTS cuenta con una infraestructura de punta y está conformado por un personal capacitado y sobresalientes en el área de óptica, entre los que se encuentran profesores, estudiantes de maestría y estudiantes de doctorado. En el GOTS nos encontramos interesados en estudiantes destacados que sedeen incursionar sus estudios en el área de óptica. Entre las lineas de investigación que manejamos se encuentran fibras ópticas, metrología óptica, nanometrología de materiales, procesamiento de señales, procesamiento óptico con materiales fotorrefractivos, tratamiento híbrido de señales, óptica cuántica y óptica teórica.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Calendar -->
+  {% if seminar_events %}
+  {% localtime on %}
+  <section class="showcase bg-dark text-center text-white">
+    <div class="container">
+      <h2 class="lead mb-5">Proximos seminarios</h2>
+      <div class="container">
+        {% for event in seminar_events %}
+        <div class="row row-striped">
+          <div class="col-2">
+            <h1 class="display-4"><span class="badge badge-success">{{event.starting_date|date:"d"}}</span></h1>
+            <h2>{{event.starting_date|date:"M"}}</h2>
+          </div>
+          <div class="col-10">
+            <h3 class="text-uppercase"><strong>{{event.title}}</strong></h3>
+            <ul class="list-inline">
+              <li class="list-inline-item"><i class="fa fa-calendar" aria-hidden="true"></i> {{event.starting_date|date:"l"}}</li>
+              <li class="list-inline-item"><i class="fa fa-clock" aria-hidden="true"></i> {{event.starting_date|time:"g:i A"}} - {{event.ending_date|time:"g:i A"}}</li>
+              <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{event.location}}</li>
+              <li class="list-inline-item"><i class="fa fa-user-tie" aria-hidden="true"></i> {{event.presented_by}}</li>
+            </ul>
+            <p class="mb-4 text-center">{{event.description}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endlocaltime %}
+  {% endif %}
+  
   <!-- Applications -->
   <section class="features-icons bg-light text-center">
     <div class="container">
-      <h2 class="mb-5">Aplicativos disponibles</h2>
+      <h2 class="lead mb-5">Aplicativos disponibles</h2>
       <div class="row">
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
@@ -73,8 +103,7 @@
               <i class="icon-screen-desktop m-auto text-primary"></i>
             </div>
             <h3>Video conferencias</h3>
-            <p class="lead mb-0">Servidor Jitsi disponible. Crea espacios virtuales para tus reuniones. Mantente seguro!</p>
-            <br>
+            <p class="text-center mb-4">Servidor Jitsi disponible. Crea espacios virtuales para tus reuniones!</p>
             <button class="btn btn-block btn-lg btn-success" onclick="go_to_jitsi()">Visitar</button>
           </div>
         </div>
@@ -84,8 +113,7 @@
               <i class="icon-layers m-auto text-primary"></i>
             </div>
             <h3>Almacenamiento</h3>
-            <p class="lead mb-0">Servicio de Owncloud. Manten tu información en un lugar seguro y a la mano!</p>
-            <br>
+            <p class="text-center mb-4">Servicio de Owncloud. Manten tu información en un lugar seguro y a la mano!</p>
             <button class="btn btn-block btn-lg btn-success" onclick="go_to_owncloud()">Visitar</button>
           </div>
         </div>
@@ -95,9 +123,8 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>
             <h3>Simulación</h3>
-            <p class="lead mb-0">Simulaciones interactivas de fenomenos físicos relacionados con la luz!</p>
-            <br>
-            <button class="btn btn-block btn-lg btn-success" onclick="go_to_simulations()">Visitar</button>
+            <p class="text-center mb-4">Simulaciones interactivas de fenomenos físicos relacionados con la luz!</p>
+            <button class="btn btn-block btn-lg btn-success disabled" aria-disabled="true">Visitar</button>
           </div>
         </div>
       </div>
@@ -108,15 +135,14 @@
   {% if research_areas %}
   <section class="showcase text-center">
     <div class="container-fluid p-0">
-      <h2 class="mb-5">Áreas de interés</h2>
+      <h2 class="lead mb-5">Áreas de investigación</h2>
       {% for item in research_areas %}
       {% if forloop.counter|divisibleby:2 %}
       <div class="row no-gutters">
         <div class="col-lg-6 text-white showcase-img" style="background-image: url('{{ item.image.url }}');"></div>
         <div class="col-lg-6 my-auto showcase-text">
           <h2>{{item.area}}</h2>
-          <p class="lead mb-0">{{item.description}}</p>
-          <br>
+          <p class="mb-4">{{item.description}}</p>
           <a href="{% url 'researcharea_detail' item.slug  %}" class="btn btn-success">Conocer Más &rarr;</a>
         </div>
       </div>
@@ -125,8 +151,7 @@
         <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('{{ item.image.url }}');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>{{item.area}}</h2>
-          <p class="lead mb-0">{{item.description}}</p>
-          <br>
+          <p class="mb-4">{{item.description}}</p>
           <a href="{% url 'researcharea_detail' item.slug  %}" class="btn btn-success">Conocer Más &rarr;</a>
         </div>
       </div>
@@ -139,7 +164,7 @@
   {% if post_list %}
   <section class="features-icons bg-light text-center">
     <div class="container">
-      <h2 class="mb-5">Últimas noticias</h2>
+      <h2 class="lead mb-5">Últimas noticias</h2>
       {% for post in post_list %}
       <div class="card mt-4">
         <div class="row no-gutters">
@@ -150,7 +175,7 @@
             <div class="card-body text-left">
               <a href="{% url 'post_detail' post.slug  %}">
                 <h2 class="card-title">{{ post.title }}</h2>
-                <p class="card-text">{{post.short_description}}</p></a>
+                <p class="card-text mb-0">{{post.short_description}}</p></a>
             </div>
           </div>
         </div>

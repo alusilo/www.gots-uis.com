@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1 class=" site-heading my-4 mt-3 text-white">{% block title %}Integrantes del grupo{% endblock %}</h1>
+                    <h1 class="lead site-heading my-4 mt-3 text-white">{% block title %}Integrantes del grupo{% endblock %}</h1>
                 </div>
             </div>
         </div>
@@ -25,11 +25,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <p>Las personas que pertenecen al Grupo de Óptica y Tratamiento de Señales de la
-                    Universidad Industrial de Santander trabajan con mucha dedicación en cada una de las áreas de
-                    investigación a la cual pertenecen. Adicionalmente, nuestros integrantes brindan soporte a cada uno
-                    de los estudiantes que se encuentran en formación. Estas personas están capacitadas de manera única,
-                    con su propia historia y un bagaje bastante amplio en el área de la óptica.</p>
+                <p class="mb-4">Los profesionales que pertenecen al Grupo de Óptica y Tratamiento de Señales, de la
+                    Universidad Industrial de Santander, trabajan con mucha dedicación en cada una de las áreas de
+                    investigación a la cual pertenecen. Nuestros integrantes brindan soporte a cada uno de los
+                    estudiantes que se encuentran en formación, ya que estamos capacitados de manera única,
+                    con una historia propia y un conocimiento bastante amplio en el área de la óptica.</p>
                 {% if users %}
                 <h2>Lista de integrantes</h2>
 
@@ -51,10 +51,10 @@
                             <div class="col-md-9">
                                 <div class="card-body">
                                     <h5 class="card-title"><a href="{% url 'user_detail' user.pk %}">
-                                        <i class="fas fa-user"></i> {{ user.first_name }} {{ user.last_name }}</a>
+                                        <i class="fa fa-user"></i> {{ user.first_name }} {{ user.last_name }}</a>
                                     </h5>
                                     <p class="card-text">{{ user.description | safe }}</p>
-                                    <small class="text-muted"><i class="far fa-building"></i> {{ user.school }} | <i class="far fa-envelope"></i> <a href="mailto:{{ user.email }}">{{user.email }}</a> {% if user.phone_number %}| <i class="far fa-phone"></i> <a href="tel:{{ user.phone_number }}">{{ user.phone_number }}</a>{% endif %}</small>
+                                    <small class="text-muted"><i class="fa fa-building"></i> {{ user.school }} | <i class="fa fa-envelope"></i> <a href="mailto:{{ user.email }}">{{user.email }}</a> {% if user.phone_number %}| <i class="fa fa-mobile"></i> <a href="tel:{{ user.phone_number }}">{{ user.phone_number }}</a>{% endif %}</small>
                                     <p class="card-text"><small class="text-muted">Usuario desde {{ user.date_joined.date }}</small></p>
                                 </div>
                             </div>

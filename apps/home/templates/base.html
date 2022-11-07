@@ -1,4 +1,5 @@
 {% load static %}
+{% load tz %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +75,11 @@
         <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
           <ul class="list-inline mb-2">
             <li class="list-inline-item">
+<<<<<<< HEAD
               <a href="/about/">About</a>
+=======
+              <a href="{% url 'about' %}">About</a>
+>>>>>>> e6852c8b98bac94fc9bb16df17176b3ae933a496
             </li>
             <li class="list-inline-item">&sdot;</li>
             <li class="list-inline-item">
@@ -130,10 +135,6 @@
   function go_to_admin_panel()
   {
     location.href = "/admin";
-  }
-  function go_to_simulations()
-  {
-    location.href = "{% url 'simulations' %}"
   }
   </script>
 

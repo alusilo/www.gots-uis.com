@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement
+from apps.home.models import Configuration, Menu, MenuItem, MenuItemElement, SeminarEvent
 
 
 class ConfigurationAdmin(admin.ModelAdmin):
@@ -45,3 +45,4 @@ admin.site.register(Configuration, ConfigurationAdmin)
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(MenuItem, MenuItemAdmin)
 admin.site.register(MenuItemElement, MenuItemElementAdmin)
+admin.site.register(SeminarEvent)
