@@ -48,7 +48,7 @@ class MenuItemElement(models.Model):
 	def __str__(self):
 		return "%s > %s > %s" % (self.menu_item.menu.name, self.menu_item.name, self.name)
 
-class SeminarEvent(models.Model):
+class Event(models.Model):
 	title = models.CharField(max_length=100)
 	starting_date = models.DateTimeField()
 	ending_date = models.DateTimeField()

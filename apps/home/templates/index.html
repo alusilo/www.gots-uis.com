@@ -62,13 +62,13 @@
   </section>
 
   <!-- Calendar -->
-  {% if seminar_events %}
+  {% if events %}
   {% localtime on %}
   <section class="showcase bg-dark text-center text-white">
     <div class="container">
-      <h2 class="lead mb-5">Proximos seminarios</h2>
+      <h2 class="lead mb-5">Proximos eventos</h2>
       <div class="container">
-        {% for event in seminar_events %}
+        {% for event in events %}
         <div class="row row-striped">
           <div class="col-2">
             <h1 class="display-4"><span class="badge badge-success">{{event.starting_date|date:"d"}}</span></h1>
